@@ -14,6 +14,10 @@
 
 /* ESTILIZAÇÃO DO CABECALHO */
 @layer components {
+    .foto_menu{
+        @apply flex justify-center items-center
+    }
+
     .menu {
         @apply m-auto py-10 transition-transform duration-700 ease-in-out;
         
@@ -27,11 +31,11 @@
     }
 
     .menu ul li {
-        @apply flex justify-center items-center  rounded-[10px] p-5 shadow-md bg-blue-900 w-[300px];
+        @apply flex justify-center items-center  rounded-[10px] p-5 shadow-md bg-[#3d550c] w-[300px];
     }
 
     .menu ul li a {
-        @apply text-[19px] text-white;
+        @apply text-[19px] text-[#81b622];
     }
 }
 

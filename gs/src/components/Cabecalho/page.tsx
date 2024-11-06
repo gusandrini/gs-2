@@ -1,10 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
-import { headers } from 'next/headers';
+import Image from 'next/image';
+import EcoBot from '@/Image/ecobot.png'
 
 const Cabecalho = () => {
   return (
     <header>
+        <div className="foto_menu">
+            <Image
+            src={EcoBot}
+            alt='Logo da EcoBot'
+            />
+        </div>
         <div className="container-cabecalho">
             <div className="menu">
                 <nav>
