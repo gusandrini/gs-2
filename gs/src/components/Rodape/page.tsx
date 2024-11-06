@@ -15,14 +15,12 @@ const Rodape = () => {
             </div>
 
             <div className="redes_sociais">
-                <div className="parceiros">
-                    <h2 className="titulo_rodape"></h2>
-                    <ul>
-                        <li><Link className='' href='/'>4</Link></li>
-                        <li><Link className='' href='/'>5</Link></li>
-                        <li><Link className='' href='/'>6</Link></li>
-                    </ul>
-                </div>
+                <h2 className="titulo_rodape"></h2>
+                <ul>
+                    <li><Link className='' href='/'>4</Link></li>
+                    <li><Link className='' href='/'>5</Link></li>
+                    <li><Link className='' href='/'>6</Link></li>
+                </ul>
             </div>
         </footer>
     </div>
