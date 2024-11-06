@@ -7,13 +7,12 @@ import Insta from '@/Image/instagram.png';
 const Rodape = () => {
   return (
     <div>
-      <footer>
+      <footer className=' flex justify-center items-center pt-10'>
         <div className="parceiros">
           <h2 className="titulo_rodape"></h2>
           <ul>
-            <li><Link className='' href='/'>1</Link></li>
-            <li><Link className='' href='/'>2</Link></li>
-            <li><Link className='' href='/'>3</Link></li>
+            <li><Link className='' href='/'>FIAP</Link></li>
+            <li><Link className='' href='/'>ECO</Link></li>
           </ul>
         </div>
 
