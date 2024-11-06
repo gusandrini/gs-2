@@ -39,6 +39,32 @@
     }
 }
 
+/* ESTILIZAÇÃO A PÁGINA INICIAL*/
+
+@layer components{
+    .cards{
+        @apply flex flex-row justify-center items-center ;
+    }
+
+    .energia, 
+    .calculadora,
+    .projetos{
+        @apply flex-row justify-evenly m-5 p-5 w-[100%] rounded-[10px] shadow-2xl bg-gray-800
+    }
+
+    .energia img, 
+    .calculadora img,
+    .projetos img{
+        @apply block rounded-[10px]
+    }
+
+    .energia a, 
+    .calculadora a,
+    .projetos a{
+        @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
+    }
+}
+
 
 
 
