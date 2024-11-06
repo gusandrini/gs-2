@@ -35,7 +35,7 @@
     }
 
     .menu ul li a {
-        @apply text-[19px] text-[#81b622];
+        @apply text-[25px] text-[#81b622];
     }
 }
 
