@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>
+      <body className="bg-green-900 text-white">
         <Cabecalho/>
         {children}
         <Rodape/>
