@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ESTILIZAÇÃO DO RODAPÉ */
+@layer components{
+    .fiap, .eco{
+        @apply flex-row justify-center m-[10px] p-[10px] text-center text-[30px] text-white;
+    }
+    .redes_sociais{
+        @apply flex justify-center m-[10px] p-[10px];
+    }
+}

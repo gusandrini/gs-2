@@ -11,25 +11,36 @@ const Rodape = () => {
         <div className="parceiros">
           <h2 className="titulo_rodape"></h2>
           <ul>
-            <li><Link className='' href='/'>FIAP</Link></li>
-            <li><Link className='' href='/'>ECO</Link></li>
+            <li><Link className='fiap' href='/'>FIAP</Link></li>
+          </ul>
+          <ul>
+            <li><Link className='eco' href='/'>ECO</Link></li>
           </ul>
         </div>
 
         <div className="redes_sociais">
           <h2 className="titulo_rodape"></h2>
-          <ul>
-            <li>
-              <Link className='facebook' target='_blank' rel='noopener' title='site Facebook' href="/">
-                <Image src={Face} alt='Facebook' />
-              </Link>
-            </li>
-            <li>
-              <Link className='instagram' target='_blank' rel='noopener' title='site Instagram' href="/">
-                <Image src={Insta} alt='Instagram' />
-              </Link>
-            </li>
-          </ul>
+
+          <div className="face">
+            <ul>
+              <li>
+                <Link className='facebook' target='_blank' rel='noopener' title='site Facebook' href="/">
+                  <Image src={Face} alt='Facebook' />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="insta">
+            <ul>
+              <li>
+                <Link className='instagram' target='_blank' rel='noopener' title='site Instagram' href="/">
+                  <Image src={Insta} alt='Instagram' />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </footer>
     </div>
