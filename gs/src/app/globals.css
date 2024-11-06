@@ -2,8 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    *{
+      @apply m-0 p-0 box-border no-underline
+    }
+    img {
+      width: auto;
+      max-width: 100%;
+    }
+  }
+
+/* ESTILIZAÇÃO DO CABECALHO */
+@layer components{
+    .menu{
+    @apply m-auto py-10 transition-transform duration-300 ease-out;
+        &:houver{
+            @apply scale-110;
+            }
+    }
+
+    .menu ul{
+        @apply
+    }
+  }
+
 /* ESTILIZAÇÃO DO RODAPÉ */
 @layer components{
+    footer{
+        @apply bg-black
+    }
     .fiap, .eco{
         @apply flex-row justify-center m-[10px] p-[10px] text-center text-[30px] text-white;
     }

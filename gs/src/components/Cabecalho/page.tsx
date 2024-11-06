@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 
 const Cabecalho = () => {
   return (
-    <header className='flex justify-center items-center'>
+    <header>
         <div className="container-cabecalho">
             <div className="menu">
                 <nav>

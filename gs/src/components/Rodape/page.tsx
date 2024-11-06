@@ -46,7 +46,7 @@ const Rodape = () => {
             <ul>
               <li>
                 <Link className='GitHub' target='_blank' rel='noopener' title='site GitHub' href="/">
-                  <Image src={GitHub} alt='IGitHub' />
+                  <Image src={GitHub} alt='GitHub' />
                 </Link>
               </li>
             </ul>
