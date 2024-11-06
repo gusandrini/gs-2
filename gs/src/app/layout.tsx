@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Cabecalho from "@/components/Cabecalho/page";
+import Rodape from "@/components/Rodape/page";
 
 export const metadata: Metadata = {
   title: "Global Solution",
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
+        <Cabecalho/>
         {children}
+        <Rodape/>
       </body>
     </html>
   );
