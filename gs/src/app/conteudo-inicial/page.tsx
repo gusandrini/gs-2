@@ -33,9 +33,6 @@ const Inicial = () => {
           />
           <Link className="btn_projetos" href="/projetos">Projetos de sucesso</Link>
         </div>
-          <h3>
-              Banner Visual Dinâmico: Imagem ou vídeo de alta resolução com turbinas eólicas girando sobre colinas verdes e painéis solares sob o sol. No centro, um slogan chamativo: “A Natureza é a Nossa Maior Fonte de Energia. Vamos Protegê-la.”
-          </h3>
       </div>
     </div>
   )

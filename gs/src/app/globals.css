@@ -56,7 +56,7 @@
     .energia, 
     .calculadora,
     .projetos{
-        @apply flex-row justify-evenly m-5 p-5 w-[100%]  shadow-2xl bg-gray-800
+        @apply flex-row justify-evenly m-10 p-5 w-[100%]  shadow-2xl bg-gray-800
     }
 
     .energia img, 
@@ -143,7 +143,7 @@
     }
 }
 
-/* ESTILIZAÇÃO A PÁGINA BLOG*/
+/* ESTILIZAÇÃO A PÁGINA DE DESAFIO*/
 
 @layer components{
     .introducao_desafio h1,
@@ -163,6 +163,64 @@
     .recursos_comecar p{
         @apply flex justify-start items-start ml-5 text-left text-[20px]
     }
+}
+
+/* ESTILIZAÇÃO A PÁGINA DE CONTATO*/
+
+@layer components{
+    .introducao_contato h1,
+    .informacoes_contato h1,
+    .porque_contato h1,
+    .faq h1{
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
+    }
+
+    .introducao_contato p,
+    .informacoes_contato p,
+    .porque_contato p,
+    .faq p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+
+    @layer components {
+        /* Estilização principal da página de contato */
+        .contato {
+          @apply flex justify-center items-center py-7 bg-gray-100 ;
+        }
+      
+        .stato {
+          @apply w-full max-w-lg bg-white p-8 rounded-lg shadow-lg;
+        }
+      
+        .consultoria_online h1 {
+          @apply text-2xl font-semibold text-green-600 text-center mb-6;
+        }
+      
+        .ftato {
+          @apply space-y-4;
+        }
+      
+        /* Estilo dos campos de formulário */
+        .ftato label {
+          @apply block text-gray-700 font-medium mb-2;
+        }
+      
+        .ftato input[type="text"],
+        .ftato input[type="email"],
+        .ftato input[type="message"] {
+          @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500;
+        }
+      
+        /* Estilo para o botão de envio */
+        .botao_submit {
+          @apply w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200 ease-in-out;
+        }
+      
+        /* Centralizar os botões e adicionar espaçamento ao campo de mensagem */
+        .center {
+          @apply flex justify-center mt-6;
+        }
+      }
 }
 
 
