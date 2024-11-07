@@ -188,46 +188,116 @@
         @apply flex justify-start items-start ml-5 text-left text-[20px]
     }
 
-    @layer components {
-        /* Estilização principal da página de contato */
-        .contato {
-          @apply flex justify-center items-center py-7 bg-gray-100 ;
-        }
-      
-        .stato {
-          @apply w-full max-w-lg bg-white p-8 rounded-lg shadow-lg;
-        }
-      
-        .consultoria_online h1 {
-          @apply text-2xl font-semibold text-green-600 text-center mb-6;
-        }
-      
-        .ftato {
-          @apply space-y-4;
-        }
-      
-        /* Estilo dos campos de formulário */
-        .ftato label {
-          @apply block text-gray-700 font-medium mb-2;
-        }
-      
-        .ftato input[type="text"],
-        .ftato input[type="email"],
-        .ftato input[type="message"] {
-          @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500;
-        }
-      
-        /* Estilo para o botão de envio */
-        .botao_submit {
-          @apply w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200 ease-in-out;
-        }
-      
-        /* Centralizar os botões e adicionar espaçamento ao campo de mensagem */
-        .center {
-          @apply flex justify-center mt-6;
-        }
-      }
+    .contato {
+        @apply flex justify-center items-center py-7 bg-gray-100 ;
+    }
+    
+    .stato {
+        @apply w-full max-w-lg bg-white p-8 rounded-lg shadow-lg;
+    }
+    
+    .consultoria_online h1 {
+        @apply text-2xl font-semibold text-green-600 text-center mb-6;
+    }
+    
+    .ftato {
+        @apply space-y-4;
+    }
+    
+    /* Estilo dos campos de formulário */
+    .ftato label {
+        @apply block text-gray-700 font-medium mb-2;
+    }
+    
+    .ftato input[type="text"],
+    .ftato input[type="email"],
+    .ftato input[type="message"] {
+        @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500;
+    }
+    
+    /* Estilo para o botão de envio */
+    .botao_submit {
+        @apply w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200 ease-in-out;
+    }
+    
+    /* Centralizar os botões e adicionar espaçamento ao campo de mensagem */
+    .center {
+        @apply flex justify-center mt-6;
+    }
 }
+
+/* ESTILIZAÇÃO A PÁGINA DE SAIBA MAIS*/
+
+@layer components{
+    .introducao_saiba h1,
+    .princi_fontes h1,
+    .beneficios h1,
+    .impacto h1,
+    .iniciativas h1,
+    .porque_investir h1,
+    .use h1{
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
+    }
+
+    .solar h2,
+    .eolica h2,
+    .biomassa h2,
+    .hidraeletrica h2,
+    .geotermica h2{
+        @apply flex justify-start items-start ml-5 text-[30px]
+    }
+
+    .introducao_saiba p,
+    .princi_fontes p,
+    .beneficios p,
+    .impacto p,
+    .iniciativas p,
+    .porque_investir p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+
+    /* Estilização do formulário principal */
+    .energias {
+        @apply flex justify-center items-center py-10 bg-gray-100;
+    }
+    
+    .senergia {
+        @apply w-full max-w-lg p-8 bg-white rounded-lg shadow-lg;
+    }
+    
+    .fontes_energia h1 {
+        @apply text-3xl font-bold text-center mb-6 text-green-600;
+    }
+    
+    .fenergia fieldset {
+        @apply space-y-6;
+    }
+    
+    /* Estilo dos labels e campos de entrada */
+    .fenergia label {
+        @apply block text-lg font-medium text-gray-700;
+    }
+    
+    .fenergia input[type="text"],
+    .fenergia input[type="number"],
+    .fenergia input[type="email"],
+    .fenergia select {
+        @apply w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent;
+    }
+    
+    /* Estilo do select (lista suspensa) */
+    .fenergia select {
+        @apply bg-white;
+    }
+    
+    /* Estilo do botão de envio */
+    .center .botao_submit {
+        @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
+    }
+      
+
+}
+
 
 
 
