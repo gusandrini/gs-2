@@ -22,7 +22,7 @@
         @apply m-auto py-10 transition-transform duration-700 ease-in-out;
         
         &:hover {
-            @apply scale-100;
+            @apply scale-110;
         }
     }
 
@@ -49,7 +49,7 @@
     .energia, 
     .calculadora,
     .projetos{
-        @apply flex-row justify-evenly m-5 p-5 w-[100%] rounded-[10px] shadow-2xl bg-gray-800
+        @apply flex-row justify-evenly m-5 p-5 w-[100%]  shadow-2xl bg-gray-800
     }
 
     .energia img, 
