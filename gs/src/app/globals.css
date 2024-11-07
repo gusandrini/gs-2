@@ -109,7 +109,7 @@
     .duda h2, 
     .gu h2,
     .vi h2{
-        @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
+        @apply flex justify-center items-center p-[5px] border border-solid rounded-[10px] mt-5 text-gray-800 text-center bg-white;
     }
 }
 
