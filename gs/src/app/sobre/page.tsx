@@ -51,7 +51,7 @@ const Sobre = () => {
         </div>
 
         <div className="parceirias_colaboracoes">
-        <h1>Parceirias</h1>
+        <h1>Parceiros</h1>
         <p>espaço para falar sobre as parceirias</p>
         </div>
 
