@@ -143,6 +143,28 @@
     }
 }
 
+/* ESTILIZAÇÃO A PÁGINA BLOG*/
+
+@layer components{
+    .introducao_desafio h1,
+    .obj_desafio h1,
+    .como_participar h1,
+    .exemplo_desafios h1,
+    .premiacao h1,
+    .recursos_comecar h1{
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
+    }
+
+    .introducao_desafio p,
+    .obj_desafio p,
+    .como_participar p,
+    .exemplo_desafios p,
+    .premiacao p,
+    .recursos_comecar p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+}
+
 
 
 
