@@ -241,7 +241,7 @@
 /* ESTILIZAÇÃO DO RODAPÉ */
 @layer components{
     footer{
-        @apply bg-black
+        @apply bg-black mt-20
     }
     .fiap, .eco{
         @apply flex-row justify-center m-[10px] p-[10px] text-center text-[30px] text-white;
