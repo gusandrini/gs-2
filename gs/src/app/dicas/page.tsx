@@ -1,8 +1,12 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Dicas() {
   return (
     <div>
+        <div className="paginas">
+            <Link href="/desafios">Desafios/Dicas</Link>
+        </div>
         <div className="dicas">
             <h1>Dicas para uma Vida Sustentável</h1>
 
