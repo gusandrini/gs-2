@@ -4,4 +4,6 @@ export type TipoCadastro = {
     nome: string,
     senha: string;
     email: string;
+    tipoDocumento: string;
+    documento:string;
 }

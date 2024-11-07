@@ -13,6 +13,8 @@ export default function Cadastro() {
         email: "",
         cpf: "",
         senha: "",
+        tipoDocumento:"",
+        documento:"",
     });
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,6 +36,8 @@ export default function Cadastro() {
                     email: "",
                     cpf: "",
                     senha: "",
+                    tipoDocumento:"",
+                    documento:"",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
                 navigate.push("/login");
@@ -82,18 +86,36 @@ export default function Cadastro() {
                     title="Informe um email válido, por exemplo: usuario@dominio.com."
                 />
 
-                <label htmlFor="idCpf"></label>
+                <label htmlFor="idDocumento">Tipo de Documento</label>
+                <select
+                    id="id_cpf_cnpj"
+                    onChange={(e) => setCadastro({ ...cadastro, tipoDocumento: e.target.value })}
+                    required
+                >
+                    <option value="cpf">CPF</option>
+                    <option value="cnpj">CNPJ</option>
+                </select>
+
                 <input
                     type="tel"
-                    id="idCpf"
-                    name="cpf"
-                    placeholder="CPF"
-                    value={cadastro.cpf}
-                    onChange={(e) => setCadastro({ ...cadastro, cpf: e.target.value })}
+                    id="idDocumento"
+                    name="documento"
+                    placeholder={cadastro.tipoDocumento === 'cnpj' ? 'CNPJ' : 'CPF'}
+                    value={cadastro.documento}
+                    onChange={(e) => setCadastro({ ...cadastro, documento: e.target.value })}
                     required
-                    pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{9}-\d{2}$|^\d{11}$"
-                    title="Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
+                    pattern={
+                        cadastro.tipoDocumento === 'cnpj'
+                            ? "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$|^\\d{14}$"
+                            : "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$|^\\d{11}$"
+                    }
+                    title={
+                        cadastro.tipoDocumento === 'cnpj'
+                            ? "Informe seu CNPJ no formato XX.XXX.XXX/XXXX-XX ou apenas números."
+                            : "Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
+                    }
                 />
+
 
                 <label htmlFor="idSenha"></label>
                 <input
