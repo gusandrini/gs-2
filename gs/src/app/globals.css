@@ -113,6 +113,36 @@
     }
 }
 
+/* ESTILIZAÇÃO A PÁGINA BLOG*/
+
+@layer components{
+    .introducao_blog h1,
+    .guia_rapido h1,
+    .beneficios h1,
+    .como_comecar h1,
+    .economia h1,
+    .dicas h1,
+    .incentivos h1{
+        @apply flex justify-start items-start ml-5 text-[45px]
+    }
+
+    .introducao_blog h2,
+    .guia_rapido h2,
+    .dicas h2{
+        @apply flex justify-start items-start ml-5 text-[30px]
+    }
+
+    .introducao_blog p,
+    .guia_rapido p,
+    .beneficios p,
+    .como_comecar p,
+    .economia p,
+    .dicas p,
+    .incentivos p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+}
+
 
 
 
