@@ -6,6 +6,9 @@ import EcoBot from '@/Image/ecobot.png'
 const Cabecalho = () => {
   return (
     <header>
+        <div className="login_inicio">
+            <button><Link href="/">Log in</Link></button>
+        </div>
         <div className="foto_menu">
         <Link href="/">
             <Image

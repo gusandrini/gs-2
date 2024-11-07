@@ -21,6 +21,12 @@
 
 /* ESTILIZAÇÃO DO CABECALHO */
 @layer components {
+    .login_inicio{
+        @apply flex justify-end items-end
+    }
+    .login_inicio button{
+        @apply flex justify-center items-center m-5 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622]
+    }
     .foto_menu{
         @apply flex justify-center items-center
     }
