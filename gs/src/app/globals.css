@@ -397,6 +397,92 @@
     }
 }
 
+/* ESTILIZAÇÃO A PÁGINA LOGIN */
+@layer components {
+    /* Estilização do Wrapper do Login */
+    .wrapper {
+      @apply flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6;
+    }
+  
+    /* Estilo do Título */
+    .login_h2 {
+      @apply text-3xl font-semibold text-center text-[#3d550c] mb-8;
+    }
+  
+    /* Estilo da área de entrada de dados */
+    .input-area {
+      @apply w-full max-w-md bg-white p-8 rounded-lg shadow-lg;
+    }
+  
+    /* Estilo dos inputs */
+    .input-area input {
+      @apply w-full p-4 mb-4 text-gray-700 border border-[#3d550c] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3d550c];
+    }
+  
+    /* Estilo do botão de login */
+    .b_login {
+      @apply w-full p-4 bg-[#81b622] text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c] focus:ring-2 focus:ring-[#3d550c];
+    }
+  
+    /* Estilo do link de cadastro */
+    .f_cadastro {
+      @apply text-[#81b622] underline hover:text-[#3d550c];
+    }
+  
+    /* Estilização da mensagem de erro ou sucesso */
+    .erro {
+      @apply text-red-500 text-center mt-4;
+    }
+  
+    .sucesso {
+      @apply text-green-500 text-center mt-4;
+    }
+  }
+  
+
+/* ESTILIZAÇÃO A PÁGINA CADASTRO */
+@layer components {
+    /* Estilo da página de cadastro */
+    .cadastro-page {
+      @apply flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6;
+    }
+  
+    /* Estilo do título da página */
+    .cadastro_h2 {
+      @apply text-3xl font-semibold text-center text-[#3d550c] mb-8;
+    }
+  
+    /* Estilo do formulário de cadastro */
+    .input-area {
+      @apply w-full max-w-md bg-white p-8 rounded-lg shadow-lg;
+    }
+  
+    /* Estilo dos campos de entrada (input) */
+    .input-area input {
+      @apply w-full p-4 mb-4 text-gray-700 border border-[#3d550c] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3d550c];
+    }
+  
+    /* Estilo do botão de cadastro */
+    .b_cadastro {
+      @apply w-full p-4 bg-[#81b622] text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c] focus:ring-2 focus:ring-[#3d550c];
+    }
+  
+    /* Estilo do link de login */
+    .f_login {
+      @apply text-[#81b622] underline hover:text-[#3d550c];
+    }
+  
+    /* Estilo das mensagens de erro ou sucesso */
+    .erro {
+      @apply text-red-500 text-center mt-4;
+    }
+  
+    .sucesso {
+      @apply text-green-500 text-center mt-4;
+    }
+  }
+  
+
 
 
 
