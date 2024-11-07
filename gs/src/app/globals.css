@@ -12,6 +12,13 @@
     }
   }
 
+/* ESTILIZAÇÃO PADRÃO DOS LINKS PARA HOME*/
+@layer components {
+    .paginas {
+      @apply flex justify-start m-10 mt-10 ml-[60px] text-[50px] text-[#3d550c];
+    }
+  }
+
 /* ESTILIZAÇÃO DO CABECALHO */
 @layer components {
     .foto_menu{
@@ -65,6 +72,46 @@
     }
 }
 
+/* ESTILIZAÇÃO A PÁGINA SOBRE NÓS*/
+
+@layer components{
+
+    .introducao_sobre h1,
+    .nossa_historia h1,
+    .nossa_equipe_titulo h1,
+    .parceirias_colaboracoes h1,
+    .junte h1{
+        @apply flex justify-start items-start ml-5 text-[50px]
+    }
+    .introducao_sobre p,
+    .nossa_historia p,
+    .parceirias_colaboracoes p,
+    .junte p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+
+    .nossa_equipe{
+        @apply flex flex-row justify-center items-center ;
+    }
+
+    .duda, 
+    .gu,
+    .vi{
+        @apply flex-row items-center justify-evenly m-5 p-5 w-[100%]  shadow-2xl bg-gray-800
+    }
+
+    .duda img, 
+    .gu img,
+    .vi img{
+        @apply flex justify-center items-center rounded-[10px] w-[500px] h-[480px]
+    }
+
+    .duda h2, 
+    .gu h2,
+    .vi h2{
+        @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
+    }
+}
 
 
 
