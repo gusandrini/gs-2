@@ -294,8 +294,58 @@
     .center .botao_submit {
         @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
     }
-      
+}
 
+/* ESTILIZAÇÃO A PÁGINA CALCULADORA*/
+
+@layer components{
+    .calculadora_economia h1{
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
+    }
+
+    .resultado_calculadora h2{
+        @apply flex justify-start items-start ml-5 text-[30px]
+    }
+
+    .calculadora_economia p,
+    .resultado_calculadora p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+
+    /* Seção de formulário */
+  .formulario-calculadora {
+    @apply w-full max-w-lg mx-auto p-8 mt-10 bg-white rounded-lg shadow-md border border-gray-200;
+  }
+
+  /* Legenda do formulário */
+  .formulario-calculadora legend {
+    @apply text-xl font-semibold text-green-700 mb-4;
+  }
+
+  /* Divs do campo */
+  .form-calculadora div {
+    @apply mb-6;
+  }
+
+  /* Labels dos campos */
+  .form-calculadora label {
+    @apply block text-gray-700 font-medium mb-2;
+  }
+
+  /* Campos de entrada */
+  .form-calculadora input[type="number"] {
+    @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600;
+  }
+
+  /* Botão de envio */
+  .form-calculadora .botao-calcular {
+    @apply w-full bg-green-600 text-white font-semibold py-3 rounded-md hover:bg-green-700 transition;
+  }
+
+  /* Alinhamento centralizado */
+  .form-calculadora .center {
+    @apply flex justify-center;
+  }
 }
 
 
