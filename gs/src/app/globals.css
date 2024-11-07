@@ -22,7 +22,7 @@
 /* ESTILIZAÇÃO DO CABECALHO */
 @layer components {
     .login_inicio{
-        @apply flex justify-end items-end
+        @apply flex justify-center items-center
     }
     .login_inicio button{
         @apply flex justify-center items-center m-5 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622]
@@ -481,35 +481,38 @@
       @apply text-green-500 text-center mt-4;
     }
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ESTILIZAÇÃO DO RODAPÉ */
-@layer components{
-    footer{
-        @apply bg-black mt-20
+@layer components {
+    footer {
+      @apply bg-[#3d550c] mt-20 m-[10px] p-[10px] text-[#81b622] text-center;
     }
-    .fiap, .eco{
-        @apply flex-row justify-center m-[10px] p-[10px] text-center text-[30px] text-white;
+  
+    footer ul li {
+      @apply text-white;
     }
-    .redes_sociais{
-        @apply flex justify-center m-[10px] p-[10px];
+  
+    footer img {
+      @apply w-[80px];
     }
-}
+  
+    footer h2 {
+      @apply font-bold text-[40px];
+    }
+  
+    .fiap,
+    .eco {
+      @apply flex flex-row justify-center text-[30px];
+    }
+  
+    .redes_sociais {
+      @apply flex justify-center items-center px-5;
+    }
+  
+    .face img,
+    .insta img,
+    .git img {
+      @apply px-5 pt-5;
+    }
+  }
+  

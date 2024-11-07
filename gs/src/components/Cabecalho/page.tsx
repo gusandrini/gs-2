@@ -6,9 +6,6 @@ import EcoBot from '@/Image/ecobot.png'
 const Cabecalho = () => {
   return (
     <header>
-        <div className="login_inicio">
-            <button><Link href="/login">Log in</Link></button>
-        </div>
         <div className="foto_menu">
         <Link href="/">
             <Image
@@ -17,6 +14,11 @@ const Cabecalho = () => {
             />
         </Link>
         </div>
+        
+        <div className="login_inicio">
+            <button><Link href="/login" className='font-semibold'>Faça seu login</Link></button>
+        </div>
+
         <div className="container-cabecalho">
             <div className="menu">
                 <nav>

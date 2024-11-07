@@ -8,20 +8,21 @@ import GitHub from '@/Image/github.png';
 const Rodape = () => {
   return (
     <div>
-      <footer className=' flex justify-center items-center pt-10'>
+      <footer>
+        <h2 className="titulo_rodape">
+            PARCEIROS
+        </h2>
         <div className="parceiros">
-          <h2 className="titulo_rodape"></h2>
           <ul>
-            <li><Link className='fiap' href='/'>FIAP</Link></li>
-          </ul>
-          <ul>
-            <li><Link className='eco' href='/'>ECO</Link></li>
+            <li><Link className='fiap' href='https://www.fiap.com.br/'>FIAP</Link></li>
           </ul>
         </div>
 
+        
+        <h2 className="titulo_rodape">
+            REDES SOCIAIS
+        </h2>
         <div className="redes_sociais">
-          <h2 className="titulo_rodape"></h2>
-
           <div className="face">
             <ul>
               <li>
