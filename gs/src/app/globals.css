@@ -123,7 +123,7 @@
     .economia h1,
     .dicas h1,
     .incentivos h1{
-        @apply flex justify-start items-start ml-5 text-[45px]
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
     }
 
     .introducao_blog h2,
