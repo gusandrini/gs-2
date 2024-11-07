@@ -380,9 +380,24 @@
     .projeto_tres h3{
         @apply flex justify-center items-center m-3 p-5 border-solid border-[2px] rounded-[5px] border-[#3d550c] bg-white text-black text-justify
     }
-
-
 }
+
+
+/* ESTILIZAÇÃO A PÁGINA DOS PROJETOS JA IMPLANTADOS */
+@layer components {
+    .p_um h1,
+    .p_dois h1,
+    .p_tres h1 {
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px];
+    }
+    .p_um p,
+    .p_dois p,
+    .p_tres p {
+        @apply flex justify-start items-start ml-5 text-left text-[20px];
+    }
+}
+
+
 
 
 

@@ -5,9 +5,9 @@ export default function ProjetoDois() {
   return (
     <div>
       <div className="paginas">
-        <Link href="/projetos">Projetos/Porjeto 2</Link>
+        <Link href="/projetos">Projetos/Cidade de Petrolina</Link>
       </div>
-      <div className="introducao_p_dois">
+      <div className="p_dois">
         <h1>
           Projeto Solar na Cidade de Petrolina, Pernambuco
         </h1>

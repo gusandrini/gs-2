@@ -6,9 +6,9 @@ export default function ProjetoUm() {
     <div>
 
       <div className="paginas">
-        <Link href="/projetos">Projetos/Porjeto 1</Link>
+        <Link href="/projetos">Projetos/Aldeia Kariri-Xocó</Link>
       </div>
-      <div className="introducao_p_um">
+      <div className="p_um">
         <h1>
         Aldeia Kariri-Xocó, em Alagoas
         </h1>

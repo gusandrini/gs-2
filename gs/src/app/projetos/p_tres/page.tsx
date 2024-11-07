@@ -5,9 +5,9 @@ export default function ProjetoTres() {
   return (
     <div>
       <div className="paginas">
-        <Link href="/projetos">Projetos/Porjeto 3</Link>
+        <Link href="/projetos">Projetos/Fazenda Solar</Link>
       </div>
-      <div className="introducao_p_tres">
+      <div className="p_tres">
         <h1>
         Fazenda Solar em Goiás – Fazenda São João
         </h1>
