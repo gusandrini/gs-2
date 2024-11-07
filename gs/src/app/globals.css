@@ -348,6 +348,42 @@
   }
 }
 
+/* ESTILIZAÇÃO A PÁGINA DE PROJETOS*/
+
+@layer components{
+    .introducao_projetos h1{
+        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
+    }
+    .introducao_projetos p,
+    .projetos_exemplos p,
+    .fim_projetos p{
+        @apply flex justify-start items-start ml-5 text-left text-[20px]
+    }
+    .projetos_exemplos{
+        @apply flex justify-center items-center
+    }
+
+    .projeto_um, 
+    .projeto_dois,
+    .projeto_tres{
+        @apply flex-col justify-center items-center m-3 p-3 border-solid border-[4px] rounded-[5px] border-[#3d550c] bg-[#3d550c] text-[#81b622] text-justify
+    }
+
+    .btn_p_um  a,
+    .btn_p_dois a,
+    .btn_p_tres a{
+        @apply flex justify-center items-center text-center px-14
+    }
+
+    .projeto_um h3, 
+    .projeto_dois h3,
+    .projeto_tres h3{
+        @apply flex justify-center items-center m-3 p-5 border-solid border-[2px] rounded-[5px] border-[#3d550c] bg-white text-black text-justify
+    }
+
+
+}
+
 
 
 
