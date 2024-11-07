@@ -33,7 +33,7 @@ const Desafio = () => {
           <p>
             1° Escolha uma Meta Sustentável: Escolha entre várias ações sustentáveis, como instalar painéis solares, trocar lâmpadas para modelos 
             LED, adotar um consumo consciente de eletricidade, ou até mesmo instalar um medidor de energia para acompanhar o consumo. <br />
-            2° Acompanhe Seu Progresso: Use nosso aplicativo ou a calculadora de economia energética para ver quantos quilowatts e dinheiro você 
+            2° Acompanhe Seu Progresso: Use nossa calculadora de economia energética para ver quantos quilowatts e dinheiro você 
             economizou, além da redução nas emissões de CO₂. <br />
             3° Compartilhe sua Jornada: Publique fotos, compartilhe histórias e acompanhe o progresso de outros participantes em nossas redes 
             sociais. Use a hashtag #EnergiaSustentável e nos marque para inspirar e chegar em mais pessoas!
@@ -72,8 +72,9 @@ const Desafio = () => {
           <p>
           Calculadora de Economia de Energia: Descubra o quanto você pode economizar mudando pequenos hábitos em casa. <br />
           Guia de Instalação Solar: Aprenda o que é necessário para instalar um sistema solar e começar a gerar sua própria energia. <br />
-          Dicas de Sustentabilidade: Confira nossa seção de dicas para tornar seu dia a dia mais sustentável, desde o uso consciente de energia 
-          até a redução de desperdício.
+          </p>
+          <p>
+          Dicas de Sustentabilidade: <Link href="/dicas">  Acesse aqui</Link>
           </p>
         </div>
     </div>
