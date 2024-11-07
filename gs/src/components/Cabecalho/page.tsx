@@ -7,17 +7,25 @@ const Cabecalho = () => {
   return (
     <header>
         <div className="foto_menu">
+        <div className="login_inicio">
+            <button className="botao_inicio"><Link href="/login">Login</Link></button>
+        </div>
+
         <Link href="/">
             <Image
             src={EcoBot}
             alt='Logo da EcoBot'
             />
         </Link>
+
+        <div className="perfil_inicio">
+            <button className="botao_inicio"><Link href="/perfil">Perfil</Link></button>
+        </div>
         </div>
         
-        <div className="login_inicio">
-            <button><Link href="/login" className='font-semibold'>Faça seu login</Link></button>
-        </div>
+        
+
+        
 
         <div className="container-cabecalho">
             <div className="menu">

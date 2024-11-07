@@ -21,12 +21,17 @@
 
 /* ESTILIZAÇÃO DO CABECALHO */
 @layer components {
-    .login_inicio{
-        @apply flex justify-center items-center
-    }
-    .login_inicio button{
-        @apply flex justify-center items-center m-5 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622]
-    }
+  .login_inicio,
+  .perfil_inicio {
+    @apply flex justify-start items-start mx-16;
+}
+
+/* Estilos compartilhados para os botões */
+.botao_inicio {
+    @apply flex justify-center items-center m-2 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622] w-16;
+}
+
+
     .foto_menu{
         @apply flex justify-center items-center
     }
