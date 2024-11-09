@@ -108,7 +108,7 @@
     .duda, 
     .gu,
     .vi{
-        @apply flex-row items-center justify-evenly m-5 p-5 w-[100%]  shadow-2xl bg-gray-800
+        @apply flex-row items-center justify-evenly m-20 p-9 w-[100%]  shadow-2xl bg-gray-800
     }
 
     .duda img, 
@@ -117,9 +117,9 @@
         @apply flex justify-center items-center rounded-[10px] w-[500px] h-[480px]
     }
 
-    .duda h2, 
-    .gu h2,
-    .vi h2{
+    .duda p, 
+    .gu p,
+    .vi p{
         @apply flex justify-center items-center p-[5px] border border-solid rounded-[10px] mt-5 text-gray-800 text-center bg-white;
     }
 }
