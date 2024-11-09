@@ -138,16 +138,6 @@ const Saiba = () => {
           </div>
           
           <fieldset>
-            {/* <!-- Nome --> */}
-            <div>
-              <label htmlFor="name">Nome:</label>
-              <input 
-                type="text"
-                id="nome"
-                placeholder="Digite seu nome"
-              />
-            </div>
-
             {/* <!-- Tipo de Energia de Interesse --> */}
             <div>
               <label htmlFor="tipo_energia">Tipo de Energia de Interesse:</label>
