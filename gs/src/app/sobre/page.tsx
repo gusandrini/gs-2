@@ -49,7 +49,7 @@ const Sobre = () => {
                   <Link href="https://github.com/dudatiemiak">GitHub</Link>
               </p>
               <p>
-                  <Link href="">LinkedIn</Link>
+                  <Link href="https://www.linkedin.com/in/eduarda-tiemi-akamini-machado-6908092b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">LinkedIn</Link>
               </p>
               <p>Turma: 1TDSPH</p>
               <p>RM: 554756</p>
@@ -75,7 +75,7 @@ const Sobre = () => {
                   <Link href="https://github.com/victoragrela">GitHub</Link>
               </p>
               <p>
-                  <Link href="">LinkedIn</Link>
+                  <Link href="https://www.linkedin.com/in/victor-giovani-agrela-4142172a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">LinkedIn</Link>
               </p>
               <p>Turma: 1TDSPH</p>
               <p>RM: 557345</p>
