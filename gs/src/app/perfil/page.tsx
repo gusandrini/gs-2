@@ -12,21 +12,26 @@ const Perfil = () => {
         nome: "",
         email: "",
         cpf: "",
-        cnpj: "",
     });
     const [isEditMode, setIsEditMode] = useState(false);
 
-    // Faz a chamada para carregar os dados do perfil
+    // Carrega dados do perfil do localStorage ou da API
     useEffect(() => {
-        chamadaApi();
+        const perfilLocalStorage = localStorage.getItem("perfilUsuario");
+        if (perfilLocalStorage) {
+            setPerfil(JSON.parse(perfilLocalStorage));
+        } else {
+            chamadaApi();
+        }
     }, []);
 
     // Função para fazer a chamada à API e pegar os dados do perfil
     const chamadaApi = async () => {
         try {
-            const response = await fetch('http://localhost:8080/perfil');
+            const response = await fetch('http://localhost:8080/usuario');
             const data = await response.json();
             setPerfil(data);
+            localStorage.setItem("perfilUsuario", JSON.stringify(data));  // Armazena no localStorage
         } catch (error) {
             console.error("Falha na listagem", error);
         }
@@ -45,8 +50,8 @@ const Perfil = () => {
         try {
             const method = isEditMode ? "PUT" : "POST";
             const url = isEditMode
-                ? `http://localhost:8080/perfil/${perfil.id_usuario}`
-                : 'http://localhost:8080/perfil';
+                ? `http://localhost:8080/usuario/${perfil.id_usuario}`
+                : 'http://localhost:8080/usuario';
 
             const response = await fetch(url, {
                 method,
@@ -61,15 +66,11 @@ const Perfil = () => {
             });
 
             if (response.ok) {
+                const data = await response.json();
                 alert(isEditMode ? "Perfil editado com sucesso!" : "Perfil criado com sucesso!");
-                setPerfil({
-                    id_usuario: 0,
-                    nome: "",
-                    email: "",
-                    cpf: "",
-                });
+                setPerfil(data);
+                localStorage.setItem("perfilUsuario", JSON.stringify(data));  // Atualiza no localStorage
                 setIsEditMode(false);
-                await chamadaApi();
                 navigate.push("/perfil");
             } else {
                 const errorText = await response.json();
@@ -94,11 +95,15 @@ const Perfil = () => {
 
             if (response.ok) {
                 alert("Perfil removido com sucesso!");
-                await chamadaApi();
+                localStorage.removeItem("perfilUsuario");  // Remove do localStorage
                 navigate.push("/login");
+            } else {
+                const errorText = await response.json();
+                setMensagemFeedback(`Erro ao excluir: ${errorText.message || 'Erro desconhecido.'}`);
             }
         } catch (error) {
             console.error("Falha ao remover perfil.", error);
+            setMensagemFeedback("Falha ao remover perfil.");
         }
     };
 

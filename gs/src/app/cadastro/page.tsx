@@ -36,7 +36,7 @@ export default function Cadastro() {
                     senha: "",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
-                navigate.push("/login");
+                navigate.push("");
             } else {
                 const errorText = await response.json();
                 setMensagemCadastro(`Erro ao cadastrar usuário: ${errorText.message || 'Erro desconhecido.'}`);
@@ -79,14 +79,13 @@ export default function Cadastro() {
 
                 <label htmlFor="idCpf"></label>
                 <input
-                    type="tel"
+                    type="number"
                     id="idCpf"
                     name="cpf"
                     placeholder="CPF"
                     value={cadastro.cpf}
                     onChange={(e) => setCadastro({ ...cadastro, cpf: e.target.value })}
                     required
-                    pattern="^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$|^\\d{11}$"
                     title="Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
                 />
 

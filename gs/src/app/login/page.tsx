@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 // Definindo uma interface para o tipo de usuário
 interface Usuario {
@@ -20,7 +20,7 @@ const Login = () => {
   useEffect(() => {
     const user = sessionStorage.getItem("usuario");
     if (user) {
-      navigate.push("/");
+      navigate.push("");
     }
 
     const chamadaApi = async () => {
@@ -49,7 +49,7 @@ const Login = () => {
       sessionStorage.setItem("usuario", JSON.stringify(usuario));
       setMensagem("Login bem-sucedido!");
       setTimeout(() => {
-        navigate.push("/"); 
+        navigate.push("/");
       }, 2000);
     } else {
       setMensagem("Email ou senha inválidos.");
