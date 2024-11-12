@@ -12,9 +12,8 @@ export default function Cadastro() {
         nome: "",
         email: "",
         cpf: "",
+        cnpj: "",
         senha: "",
-        tipoDocumento:"",
-        documento:"",
     });
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,9 +34,8 @@ export default function Cadastro() {
                     nome: "",
                     email: "",
                     cpf: "",
+                    cnpj: "",
                     senha: "",
-                    tipoDocumento:"",
-                    documento:"",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
                 navigate.push("/login");
@@ -47,13 +45,7 @@ export default function Cadastro() {
             }
         } catch (error) {
             console.error("Erro ao cadastrar usuário:", error);
-        
-            
-            if (error instanceof Error) {
-                setMensagemCadastro(`Erro ao cadastrar usuário: ${error.message}`);
-            } else {
-                setMensagemCadastro('Erro ao cadastrar usuário: Erro no frontend.');
-            }
+            setMensagemCadastro(`Erro ao cadastrar usuário: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
         }
     };
 
@@ -88,8 +80,12 @@ export default function Cadastro() {
 
                 <label htmlFor="idDocumento">Tipo de Documento</label>
                 <select
-                    id="id_cpf_cnpj"
-                    onChange={(e) => setCadastro({ ...cadastro, tipoDocumento: e.target.value })}
+                    id="idDocumento"
+                    onChange={(e) => setCadastro({
+                        ...cadastro,
+                        cpf: e.target.value === 'cpf' ? cadastro.cpf : "",
+                        cnpj: e.target.value === 'cnpj' ? cadastro.cnpj : "",
+                    })}
                     required
                 >
                     <option value="cpf">CPF</option>
@@ -98,24 +94,29 @@ export default function Cadastro() {
 
                 <input
                     type="tel"
-                    id="idDocumento"
-                    name="documento"
-                    placeholder={cadastro.tipoDocumento === 'cnpj' ? 'CNPJ' : 'CPF'}
-                    value={cadastro.documento}
-                    onChange={(e) => setCadastro({ ...cadastro, documento: e.target.value })}
+                    id="documentoInput"
+                    name="documentoInput"
+                    placeholder={cadastro.cnpj ? 'CNPJ' : 'CPF'}
+                    value={cadastro.cnpj || cadastro.cpf}
+                    onChange={(e) => {
+                        setCadastro({
+                            ...cadastro,
+                            cnpj: cadastro.cnpj ? e.target.value : "",
+                            cpf: cadastro.cpf ? e.target.value : "",
+                        });
+                    }}
                     required
                     pattern={
-                        cadastro.tipoDocumento === 'cnpj'
+                        cadastro.cnpj
                             ? "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$|^\\d{14}$"
                             : "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$|^\\d{11}$"
                     }
                     title={
-                        cadastro.tipoDocumento === 'cnpj'
+                        cadastro.cnpj
                             ? "Informe seu CNPJ no formato XX.XXX.XXX/XXXX-XX ou apenas números."
                             : "Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
                     }
                 />
-
 
                 <label htmlFor="idSenha"></label>
                 <input
