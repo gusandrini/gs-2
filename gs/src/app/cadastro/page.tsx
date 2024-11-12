@@ -36,7 +36,7 @@ export default function Cadastro() {
                     senha: "",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
-                navigate.push("");
+                navigate.push("/login");
             } else {
                 const errorText = await response.json();
                 setMensagemCadastro(`Erro ao cadastrar usuário: ${errorText.message || 'Erro desconhecido.'}`);
