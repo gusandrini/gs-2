@@ -44,7 +44,7 @@ const Perfil = () => {
 
         try {
             const method = isEditMode ? "PUT" : "POST";
-            const url = isEditMode 
+            const url = isEditMode
                 ? `http://localhost:8080/perfil/${perfil.id_usuario}`
                 : 'http://localhost:8080/perfil';
 
@@ -57,7 +57,6 @@ const Perfil = () => {
                     nome: perfil.nome,
                     email: perfil.email,
                     cpf: perfil.cpf,
-                    cnpj: perfil.cnpj,
                 })
             });
 
@@ -68,7 +67,6 @@ const Perfil = () => {
                     nome: "",
                     email: "",
                     cpf: "",
-                    cnpj: "",
                 });
                 setIsEditMode(false);
                 await chamadaApi();
@@ -128,11 +126,11 @@ const Perfil = () => {
                     <div>
                         <label>Nome:</label>
                         {isEditMode ? (
-                            <input 
-                                type="text" 
-                                name="nome" 
-                                value={perfil.nome} 
-                                onChange={handleChange} 
+                            <input
+                                type="text"
+                                name="nome"
+                                value={perfil.nome}
+                                onChange={handleChange}
                                 placeholder="Digite seu nome"
                                 title="Insira seu nome completo"
                             />
@@ -143,11 +141,11 @@ const Perfil = () => {
                     <div>
                         <label>Email:</label>
                         {isEditMode ? (
-                            <input 
-                                type="email" 
-                                name="email" 
-                                value={perfil.email} 
-                                onChange={handleChange} 
+                            <input
+                                type="email"
+                                name="email"
+                                value={perfil.email}
+                                onChange={handleChange}
                                 placeholder="Digite seu email"
                                 title="Insira seu email"
                             />
@@ -158,11 +156,11 @@ const Perfil = () => {
                     <div>
                         <label>CPF:</label>
                         {isEditMode ? (
-                            <input 
-                                type="text" 
-                                name="cpf" 
-                                value={perfil.cpf} 
-                                onChange={handleChange} 
+                            <input
+                                type="text"
+                                name="cpf"
+                                value={perfil.cpf}
+                                onChange={handleChange}
                                 placeholder="Digite seu CPF"
                                 title="Insira seu CPF"
                                 pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
@@ -170,23 +168,6 @@ const Perfil = () => {
                             />
                         ) : (
                             <span>{perfil.cpf}</span>  // Exibe o CPF sem possibilidade de editar
-                        )}
-                    </div>
-                    <div>
-                        <label>CNPJ:</label>
-                        {isEditMode ? (
-                            <input 
-                                type="text" 
-                                name="cnpj" 
-                                value={perfil.cnpj} 
-                                onChange={handleChange} 
-                                placeholder="Digite seu CNPJ"
-                                title="Insira seu CNPJ"
-                                pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}"
-                                required
-                            />
-                        ) : (
-                            <span>{perfil.cnpj}</span>  // Exibe o CNPJ sem possibilidade de editar
                         )}
                     </div>
 

@@ -12,7 +12,6 @@ export default function Cadastro() {
         nome: "",
         email: "",
         cpf: "",
-        cnpj: "",
         senha: "",
     });
 
@@ -34,7 +33,6 @@ export default function Cadastro() {
                     nome: "",
                     email: "",
                     cpf: "",
-                    cnpj: "",
                     senha: "",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
@@ -47,6 +45,7 @@ export default function Cadastro() {
             console.error("Erro ao cadastrar usuário:", error);
             setMensagemCadastro(`Erro ao cadastrar usuário: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
         }
+
     };
 
     return (
@@ -78,44 +77,17 @@ export default function Cadastro() {
                     title="Informe um email válido, por exemplo: usuario@dominio.com."
                 />
 
-                <label htmlFor="idDocumento">Tipo de Documento</label>
-                <select
-                    id="idDocumento"
-                    onChange={(e) => setCadastro({
-                        ...cadastro,
-                        cpf: e.target.value === 'cpf' ? cadastro.cpf : "",
-                        cnpj: e.target.value === 'cnpj' ? cadastro.cnpj : "",
-                    })}
-                    required
-                >
-                    <option value="cpf">CPF</option>
-                    <option value="cnpj">CNPJ</option>
-                </select>
-
+                <label htmlFor="idCpf"></label>
                 <input
                     type="tel"
-                    id="documentoInput"
-                    name="documentoInput"
-                    placeholder={cadastro.cnpj ? 'CNPJ' : 'CPF'}
-                    value={cadastro.cnpj || cadastro.cpf}
-                    onChange={(e) => {
-                        setCadastro({
-                            ...cadastro,
-                            cnpj: cadastro.cnpj ? e.target.value : "",
-                            cpf: cadastro.cpf ? e.target.value : "",
-                        });
-                    }}
+                    id="idCpf"
+                    name="cpf"
+                    placeholder="CPF"
+                    value={cadastro.cpf}
+                    onChange={(e) => setCadastro({ ...cadastro, cpf: e.target.value })}
                     required
-                    pattern={
-                        cadastro.cnpj
-                            ? "^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$|^\\d{14}$"
-                            : "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$|^\\d{11}$"
-                    }
-                    title={
-                        cadastro.cnpj
-                            ? "Informe seu CNPJ no formato XX.XXX.XXX/XXXX-XX ou apenas números."
-                            : "Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
-                    }
+                    pattern="^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$|^\\d{11}$"
+                    title="Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
                 />
 
                 <label htmlFor="idSenha"></label>
