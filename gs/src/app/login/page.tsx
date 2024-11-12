@@ -18,11 +18,13 @@ const Login = () => {
   const navigate = useRouter();
 
   useEffect(() => {
-    const user = sessionStorage.getItem("usuario");
+    // Verificar no localStorage se o usuário já está logado
+    const user = localStorage.getItem("usuario");
     if (user) {
-      navigate.push("");
+      navigate.push(""); // Redireciona para a página inicial
     }
 
+    // Chama a API para buscar os usuários
     const chamadaApi = async () => {
       try {
         const response = await fetch('http://localhost:8080/usuario');
@@ -46,10 +48,15 @@ const Login = () => {
     const usuario = usuarios.find(user => user.email === email && user.senha === senha);
 
     if (usuario) {
-      sessionStorage.setItem("usuario", JSON.stringify(usuario));
+      // Salva o usuário no localStorage e sessionStorage após o login bem-sucedido
+      localStorage.setItem("usuario", JSON.stringify(usuario)); // Persistente
+      sessionStorage.setItem("usuario", JSON.stringify(usuario)); // Temporário
+
       setMensagem("Login bem-sucedido!");
+
+      // Redireciona o usuário após 2 segundos
       setTimeout(() => {
-        navigate.push("/");
+        navigate.push("/"); // Redireciona para a página inicial
       }, 2000);
     } else {
       setMensagem("Email ou senha inválidos.");

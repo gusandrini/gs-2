@@ -1,196 +1,86 @@
 "use client";
-import { TipoPerfil } from '@/types/types';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-const Perfil = () => {
-    const [mensagemFeedback, setMensagemFeedback] = useState('');
-    const navigate = useRouter();
-    const [perfil, setPerfil] = useState<TipoPerfil>({
-        id_usuario: 0,
-        nome: "",
-        email: "",
-        cpf: "",
-    });
-    const [isEditMode, setIsEditMode] = useState(false);
+import { useEffect, useState } from "react";
+import { obterUsuarioPorId, Usuario, excluirUsuarioPorId } from "../../services/api";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-    // Carrega dados do perfil do localStorage ou da API
-    useEffect(() => {
-        const perfilLocalStorage = localStorage.getItem("perfilUsuario");
-        if (perfilLocalStorage) {
-            setPerfil(JSON.parse(perfilLocalStorage));
-        } else {
-            chamadaApi();
+export default function Conta() {
+  const [usuario, setUsuario] = useState<Usuario | null>(null); 
+  const router = useRouter();
+
+  useEffect(() => {
+    // Recuperando o ID do usuário do localStorage
+    const userId = localStorage.getItem("id_usuario");
+
+    if (!userId) {
+      alert("Usuário não logado. Redirecionando para a página de login.");
+      router.push("/login");
+      return;
+    }
+
+    async function fetchUsuario() {
+      try {
+        const id_usuario = userId ? parseInt(userId, 10) : null; // Certificando-se de que o userId não seja null
+        if (!id_usuario) {
+          throw new Error("ID do usuário inválido.");
         }
-    }, []);
+        const dadosUsuario = await obterUsuarioPorId(id_usuario);
+        setUsuario(dadosUsuario);
+      } catch (error) {
+        console.error("Erro ao carregar os dados do usuário:", error);
+        alert("Erro ao carregar dados do usuário. Tente novamente mais tarde.");
+      }
+    }
 
-    // Função para fazer a chamada à API e pegar os dados do perfil
-    const chamadaApi = async () => {
-        try {
-            const response = await fetch('http://localhost:8080/usuario');
-            const data = await response.json();
-            setPerfil(data);
-            localStorage.setItem("perfilUsuario", JSON.stringify(data));  // Armazena no localStorage
-        } catch (error) {
-            console.error("Falha na listagem", error);
+    fetchUsuario();
+  }, [router]);
+
+  if (!usuario) {
+    return <p>Carregando...</p>;
+  }
+
+  async function handleExcluirConta() {
+    if (confirm("Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.")) {
+      try {
+        const userId = localStorage.getItem("id_usuario");
+        if (!userId) {
+          alert("Usuário não encontrado.");
+          return;
         }
-    };
 
-    // Função para lidar com a alteração dos dados no formulário
-    const handleChange = (evento: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = evento.target;
-        setPerfil({ ...perfil, [name]: value });
-    };
-
-    // Função para lidar com o envio do formulário (criação ou edição)
-    const handleSubmit = async (evento: React.FormEvent<HTMLFormElement>) => {
-        evento.preventDefault();
-
-        try {
-            const method = isEditMode ? "PUT" : "POST";
-            const url = isEditMode
-                ? `http://localhost:8080/usuario/${perfil.id_usuario}`
-                : 'http://localhost:8080/usuario';
-
-            const response = await fetch(url, {
-                method,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nome: perfil.nome,
-                    email: perfil.email,
-                    cpf: perfil.cpf,
-                })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                alert(isEditMode ? "Perfil editado com sucesso!" : "Perfil criado com sucesso!");
-                setPerfil(data);
-                localStorage.setItem("perfilUsuario", JSON.stringify(data));  // Atualiza no localStorage
-                setIsEditMode(false);
-                navigate.push("/perfil");
-            } else {
-                const errorText = await response.json();
-                setMensagemFeedback(`Erro: ${errorText.message || 'Erro desconhecido.'}`);
-            }
-        } catch (error) {
-            if (error instanceof Error) {
-                setMensagemFeedback(`Falha no processo: ${error.message}`);
-            } else {
-                setMensagemFeedback(`Falha no processo: Um erro desconhecido ocorreu.`);
-            }
-            console.error("Erro na requisição:", error);
+        const id_usuario = parseInt(userId, 10); // Aqui, o ID é convertido de forma segura
+        if (isNaN(id_usuario)) {
+          throw new Error("ID de usuário inválido.");
         }
-    };
 
-    // Função para excluir o perfil
-    const handleDelete = async (id: number) => {
-        try {
-            const response = await fetch(`http://localhost:8080/usuario/${id}`, {
-                method: 'DELETE',
-            });
+        await excluirUsuarioPorId(id_usuario);
+        localStorage.removeItem("id_usuario"); // Remover o ID do localStorage
+        alert("Conta excluída com sucesso.");
+        router.push("/"); // Redirecionar para a página inicial
+      } catch (error) {
+        console.error("Erro ao excluir a conta:", error);
+        alert("Erro ao excluir a conta. Tente novamente.");
+      }
+    }
+  }
 
-            if (response.ok) {
-                alert("Perfil removido com sucesso!");
-                localStorage.removeItem("perfilUsuario");  // Remove do localStorage
-                navigate.push("/login");
-            } else {
-                const errorText = await response.json();
-                setMensagemFeedback(`Erro ao excluir: ${errorText.message || 'Erro desconhecido.'}`);
-            }
-        } catch (error) {
-            console.error("Falha ao remover perfil.", error);
-            setMensagemFeedback("Falha ao remover perfil.");
-        }
-    };
-
-    // Função para iniciar o modo de edição
-    const handleEdit = (perfilSelecionado: TipoPerfil) => {
-        setPerfil(perfilSelecionado);
-        setIsEditMode(true);
-    };
-
-    return (
-        <div>
-            <div className="paginas">
-                <Link href="/">Home / Perfil</Link>
-            </div>
-
-            <div className="perfil">
-                <div className="titulo_introducao">
-                    <h1>{isEditMode ? "Edite seu Perfil" : "Visualize ou Exclua seu Perfil"}</h1>
-                </div>
-
-                {/* Exibição de feedback se houver algum */}
-                {mensagemFeedback && <div className="feedback">{mensagemFeedback}</div>}
-
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Nome:</label>
-                        {isEditMode ? (
-                            <input
-                                type="text"
-                                name="nome"
-                                value={perfil.nome}
-                                onChange={handleChange}
-                                placeholder="Digite seu nome"
-                                title="Insira seu nome completo"
-                            />
-                        ) : (
-                            <span>{perfil.nome}</span>  // Exibe o nome sem possibilidade de editar
-                        )}
-                    </div>
-                    <div>
-                        <label>Email:</label>
-                        {isEditMode ? (
-                            <input
-                                type="email"
-                                name="email"
-                                value={perfil.email}
-                                onChange={handleChange}
-                                placeholder="Digite seu email"
-                                title="Insira seu email"
-                            />
-                        ) : (
-                            <span>{perfil.email}</span>  // Exibe o email sem possibilidade de editar
-                        )}
-                    </div>
-                    <div>
-                        <label>CPF:</label>
-                        {isEditMode ? (
-                            <input
-                                type="text"
-                                name="cpf"
-                                value={perfil.cpf}
-                                onChange={handleChange}
-                                placeholder="Digite seu CPF"
-                                title="Insira seu CPF"
-                                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                                required
-                            />
-                        ) : (
-                            <span>{perfil.cpf}</span>  // Exibe o CPF sem possibilidade de editar
-                        )}
-                    </div>
-
-                    {/* Exibe o botão de salvar ou editar conforme o modo */}
-                    <div>
-                        {isEditMode ? (
-                            <button type="submit">Salvar</button>
-                        ) : (
-                            <div>
-                                <button type="button" onClick={() => handleEdit(perfil)}>Editar</button>
-                                <button type="button" onClick={() => handleDelete(perfil.id_usuario)}>Excluir</button>
-                            </div>
-                        )}
-                    </div>
-                </form>
-            </div>
+  return (
+    <div id="container_main_conta">
+      <div id="container_conta">
+        <h1 className="titulo_conta">Minha Conta</h1>
+        <p className="texto_conta">Abaixo estão seus dados cadastrados no sistema:</p>
+        <ul className="ul_conta">
+          <li><strong>Nome:</strong> {usuario.nome}</li> 
+          <li><strong>Email:</strong> {usuario.email}</li> 
+          <li><strong>CPF:</strong> {usuario.cpf}</li>
+          <li className="ultimo_li"><strong>Senha:</strong> {usuario.senha}</li> 
+        </ul>
+        <div className="botoes_conta">
+          <Link href='/perfil/editar-conta' className='link_editar_conta'>Editar</Link>
+          <button className="btn_excluir_conta" onClick={handleExcluirConta}>Excluir Conta</button>
         </div>
-    );
-};
-
-export default Perfil;
+      </div>
+    </div>
+  );
+}

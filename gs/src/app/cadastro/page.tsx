@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 export default function Cadastro() {
     const [mensagemCadastro, setMensagemCadastro] = useState('');
-    const navigate = useRouter();
+    const router = useRouter();
     const [cadastro, setCadastro] = useState<TipoCadastro>({
         id_usuario: 0,
         nome: "",
@@ -36,16 +36,22 @@ export default function Cadastro() {
                     senha: "",
                 });
                 setMensagemCadastro("Usuário cadastrado com sucesso!");
-                navigate.push("/login");
+                router.push("/login");
             } else {
-                const errorText = await response.json();
-                setMensagemCadastro(`Erro ao cadastrar usuário: ${errorText.message || 'Erro desconhecido.'}`);
+                const errorText = await response.text();
+                const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
+                
+                // Tratamento específico para ORA-00001
+                if (errorMessage.includes("ORA-00001")) {
+                    setMensagemCadastro("Erro ao cadastrar: Usuário já cadastrado.");
+                } else {
+                    setMensagemCadastro(`Erro ao cadastrar usuário: ${errorMessage}`);
+                }
             }
         } catch (error) {
             console.error("Erro ao cadastrar usuário:", error);
             setMensagemCadastro(`Erro ao cadastrar usuário: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
         }
-
     };
 
     return (
@@ -79,13 +85,14 @@ export default function Cadastro() {
 
                 <label htmlFor="idCpf"></label>
                 <input
-                    type="number"
+                    type="text"
                     id="idCpf"
                     name="cpf"
                     placeholder="CPF"
                     value={cadastro.cpf}
                     onChange={(e) => setCadastro({ ...cadastro, cpf: e.target.value })}
                     required
+                    pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" // Expressão regular para CPF
                     title="Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
                 />
 
