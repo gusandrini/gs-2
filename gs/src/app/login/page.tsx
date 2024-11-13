@@ -21,7 +21,7 @@ const Login = () => {
     // Verificar no localStorage se o usuário já está logado
     const user = localStorage.getItem("usuario");
     if (user) {
-      navigate.push("/"); // Redireciona para a página inicial se o usuário já estiver logado
+      navigate.push(""); // Redireciona para a página inicial se o usuário já estiver logado
     }
 
     // Chama a API para buscar os usuários
