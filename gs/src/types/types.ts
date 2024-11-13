@@ -6,13 +6,6 @@ export type TipoCadastro = {
     email: string;
 }
 
-export type TipoPerfil = {
-    id_usuario: number,
-    cpf: string,
-    nome: string,
-    email: string;
-}
-
 export type TipoEnergia = {
     id_es: number,
     tp_energia: string,

@@ -21,7 +21,7 @@ const Login = () => {
     // Verificar no localStorage se o usuário já está logado
     const user = localStorage.getItem("usuario");
     if (user) {
-      navigate.push(""); // Redireciona para a página inicial
+      navigate.push("/"); // Redireciona para a página inicial se o usuário já estiver logado
     }
 
     // Chama a API para buscar os usuários
@@ -35,6 +35,7 @@ const Login = () => {
         setUsuarios(data);
       } catch (error) {
         console.error("Falha na listagem", error);
+        setMensagem("Erro ao carregar dados. Tente novamente mais tarde.");
       }
     };
 
@@ -97,6 +98,8 @@ const Login = () => {
           <Link href="/cadastro" className="f_cadastro">Cadastre-se</Link>
         </p>
       </form>
+
+      {/* Exibe mensagem de sucesso ou erro */}
       <p id="mensagem" className={mensagem.includes('sucesso') ? 'sucesso' : 'erro'}>{mensagem}</p>
     </div>
   );

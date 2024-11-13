@@ -1,86 +1,161 @@
 "use client";
+import { TipoCadastro } from '@/types/types';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
-import { useEffect, useState } from "react";
-import { obterUsuarioPorId, Usuario, excluirUsuarioPorId } from "../../services/api";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-
-export default function Conta() {
-  const [usuario, setUsuario] = useState<Usuario | null>(null); 
-  const router = useRouter();
+export default function EditarExcluirUsuario() {
+  const [mensagemFeedback, setMensagemFeedback] = useState('');
+  const navigate = useRouter();
+  const [usuario, setUsuario] = useState<TipoCadastro>({
+    id_usuario: 0,
+    nome: "",
+    email: "",
+    cpf: "",
+    senha: "",
+  });
+  const [isEditMode, setIsEditMode] = useState(false);
 
   useEffect(() => {
-    // Recuperando o ID do usuário do localStorage
-    const userId = localStorage.getItem("id_usuario");
+    // Recupera os dados do usuário do localStorage
+    const usuarioLocal = localStorage.getItem("usuario");
 
-    if (!userId) {
-      alert("Usuário não logado. Redirecionando para a página de login.");
-      router.push("/login");
-      return;
+    if (usuarioLocal) {
+      const usuarioData = JSON.parse(usuarioLocal);
+      setUsuario(usuarioData);
+      setIsEditMode(true); // Definindo que o modo de edição está ativado
     }
+  }, []);
 
-    async function fetchUsuario() {
-      try {
-        const id_usuario = userId ? parseInt(userId, 10) : null; // Certificando-se de que o userId não seja null
-        if (!id_usuario) {
-          throw new Error("ID do usuário inválido.");
-        }
-        const dadosUsuario = await obterUsuarioPorId(id_usuario);
-        setUsuario(dadosUsuario);
-      } catch (error) {
-        console.error("Erro ao carregar os dados do usuário:", error);
-        alert("Erro ao carregar dados do usuário. Tente novamente mais tarde.");
+  const handleChange = (evento: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = evento.target;
+    setUsuario({ ...usuario, [name]: value });
+  };
+
+  const handleSubmit = async (evento: React.FormEvent<HTMLFormElement>) => {
+    evento.preventDefault();
+
+    try {
+      const url = `http://localhost:8080/usuario/${usuario.id_usuario}`;
+
+      const response = await fetch(url, {
+        method: "PUT", // Sempre usa PUT
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id_usuario: Number(usuario.id_usuario),
+          nome: usuario.nome,
+          email: usuario.email,
+          cpd: usuario.cpf,
+          senha: usuario.senha,
+        })
+      });
+
+      if (response.ok) {
+        alert("Conta editada com sucesso!");
+        setUsuario({
+          id_usuario: 0,
+          nome: "",
+          email: "",
+          cpf: "",
+          senha: "",
+        });
+        navigate.push("/perfil");
+      } else {
+        const errorText = await response.json();
+        setMensagemFeedback(`Erro: ${errorText.message || 'Erro desconhecido.'}`);
       }
-    }
-
-    fetchUsuario();
-  }, [router]);
-
-  if (!usuario) {
-    return <p>Carregando...</p>;
-  }
-
-  async function handleExcluirConta() {
-    if (confirm("Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.")) {
-      try {
-        const userId = localStorage.getItem("id_usuario");
-        if (!userId) {
-          alert("Usuário não encontrado.");
-          return;
-        }
-
-        const id_usuario = parseInt(userId, 10); // Aqui, o ID é convertido de forma segura
-        if (isNaN(id_usuario)) {
-          throw new Error("ID de usuário inválido.");
-        }
-
-        await excluirUsuarioPorId(id_usuario);
-        localStorage.removeItem("id_usuario"); // Remover o ID do localStorage
-        alert("Conta excluída com sucesso.");
-        router.push("/"); // Redirecionar para a página inicial
-      } catch (error) {
-        console.error("Erro ao excluir a conta:", error);
-        alert("Erro ao excluir a conta. Tente novamente.");
+    } catch (error) {
+      if (error instanceof Error) {
+        setMensagemFeedback(`Falha no processo: ${error.message}`);
+      } else {
+        setMensagemFeedback(`Falha no processo: Um erro desconhecido ocorreu.`);
       }
+      console.error("Erro na requisição:", error);
     }
-  }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/usuario/${usuario.id_usuario}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        alert("Usuário removido com sucesso!");
+        localStorage.removeItem("usuario"); // Remove os dados do usuário após exclusão
+        navigate.push("/cadastro");
+      }
+    } catch (error) {
+      console.error("Falha ao remover usuário.", error);
+    }
+  };
 
   return (
-    <div id="container_main_conta">
-      <div id="container_conta">
-        <h1 className="titulo_conta">Minha Conta</h1>
-        <p className="texto_conta">Abaixo estão seus dados cadastrados no sistema:</p>
-        <ul className="ul_conta">
-          <li><strong>Nome:</strong> {usuario.nome}</li> 
-          <li><strong>Email:</strong> {usuario.email}</li> 
-          <li><strong>CPF:</strong> {usuario.cpf}</li>
-          <li className="ultimo_li"><strong>Senha:</strong> {usuario.senha}</li> 
-        </ul>
-        <div className="botoes_conta">
-          <Link href='/perfil/editar-conta' className='link_editar_conta'>Editar</Link>
-          <button className="btn_excluir_conta" onClick={handleExcluirConta}>Excluir Conta</button>
-        </div>
-      </div>
+    <div className="editar-excluir-page">
+      <h2 className="titulo">Editar ou Excluir Conta</h2>
+      <form onSubmit={handleSubmit} className="input-area">
+        <label htmlFor="idNome">Nome completo:</label>
+        <input
+          type="text"
+          id="idNome"
+          name="nome"
+          placeholder="Nome completo"
+          value={usuario.nome}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="idEmail">Email:</label>
+        <input
+          type="email"
+          id="idEmail"
+          name="email"
+          placeholder="Email"
+          value={usuario.email}
+          onChange={handleChange}
+          required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+        />
+
+        <label htmlFor="idCpf">CPF:</label>
+        <input
+          type="text"
+          id="idCpf"
+          name="cpf"
+          placeholder="CPF"
+          value={usuario.cpf}
+          onChange={handleChange}
+          required
+          pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+        />
+
+        <label htmlFor="idSenha">Senha:</label>
+        <input
+          type="password"
+          id="idSenha"
+          name="senha"
+          placeholder="Senha"
+          value={usuario.senha}
+          onChange={handleChange}
+          required
+          pattern=".{8,}"
+          title="A senha deve ter no mínimo 8 caracteres."
+        />
+
+        <button type="submit" className="botao-atualizar">Atualizar Dados</button>
+      </form>
+
+      <button onClick={handleDelete} className="botao-excluir">Excluir Conta</button>
+
+      <p className={mensagemFeedback.includes('sucesso') ? 'mensagem-sucesso' : 'mensagem-erro'}>
+        {mensagemFeedback}
+      </p>
+
+      <p className="login">
+        <Link href="/perfil" className="voltar-perfil">Voltar para o Perfil</Link>
+      </p>
     </div>
   );
 }
