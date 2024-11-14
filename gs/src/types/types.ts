@@ -18,3 +18,11 @@ export type TipoEnergia = {
     preferencia_contato: string;
     contato: string;
 }
+
+export type TipoConta = {
+    id_economia: number,
+    consumo_mensal_energia: string,
+    custo_energia: string,
+    economia_es: string;
+    economia_total: string;
+}
