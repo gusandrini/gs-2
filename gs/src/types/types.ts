@@ -11,9 +11,9 @@ export type TipoEnergia = {
     tp_energia: string,
     localizacao_geografica: string,
     energia_mensal: string;
-    obj_implantacao: string;
+    obj_implementacao: string;
     orcamento: string;
-    necessidade_orcamento: string;
+    necessidade_atendimento: string;
     usuario_es: string;
     preferencia_contato: string;
     contato: string;

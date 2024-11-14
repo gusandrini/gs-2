@@ -56,7 +56,7 @@ export default function EditarExcluirUsuario() {
       const url = `http://localhost:8080/usuario/${usuario.id_usuario}`;
 
       const response = await fetch(url, {
-        method: "PUT", 
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
@@ -74,9 +74,13 @@ export default function EditarExcluirUsuario() {
         throw new Error(errorText || 'Erro desconhecido.');
       }
 
-      const responseBody = await response.json(); 
+      const responseBody = await response.json();
       if (responseBody) {
         alert("Conta editada com sucesso!");
+
+        // Atualiza o localStorage com os novos dados do usuário
+        localStorage.setItem("usuario", JSON.stringify(usuario));
+
         setUsuario({
           id_usuario: 0,
           nome: "",
@@ -171,11 +175,19 @@ export default function EditarExcluirUsuario() {
           title="A senha deve ter no mínimo 8 caracteres."
         />
 
-        <button onClick={() => handleEdit}type="submit" className="botao-atualizar">Atualizar Dados</button>-
-        <button onClick={handleDelete} className="botao-excluir">Excluir Conta</button>
+        <div className="atualiza">
+          <button type="submit" className="botao-atualizar">
+            Atualizar Dados
+          </button>
+        </div>
+        
+        <div className="excluir">
+          <button type="button" onClick={handleDelete} className="botao-excluir">
+            Excluir Conta
+          </button>
+        </div>
+        
       </form>
-
-      
 
       <p className={mensagemFeedback.includes('sucesso') ? 'mensagem-sucesso' : 'mensagem-erro'}>
         {mensagemFeedback}
