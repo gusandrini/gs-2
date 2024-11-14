@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Saiba = () => {
-  const [mensagemsaiba, setMensagemsaiba] = useState('');
+  const [mensagemSaiba, setMensagemSaiba] = useState('');
   const router = useRouter();
   const [saiba, setSaiba] = useState<TipoEnergia>({
     id_es: 0,
@@ -45,16 +45,16 @@ const Saiba = () => {
           preferencia_contato: "",
           contato: "",
         });
-        setMensagemsaiba("Usuário cadastrado com sucesso!");
+        setMensagemSaiba("Usuário cadastrado com sucesso!");
         router.push("/");
       } else {
         const errorText = await response.text();
         const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
-        setMensagemsaiba(errorMessage);
+        setMensagemSaiba(errorMessage);
       }
     } catch (error) {
       console.error("Erro ao cadastrar:", error);
-      setMensagemsaiba(`Erro ao cadastrar: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
+      setMensagemSaiba(`Erro ao cadastrar: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
     }
   };
 
@@ -162,14 +162,13 @@ const Saiba = () => {
       </div>
 
       <div className="energias">
-        <section className="senergia">
-          <form className="fenergia" onSubmit={handleSubmit}>
-            <div className="fontes_energia">
+        <section className="section-energia">
+          <form className="formulario-energia" onSubmit={handleSubmit}>
+            <div className="titulo-fontes-energia">
               <h1>FONTES DE ENERGIA</h1>
             </div>
             
             <fieldset>
-              {/* Tipo de Energia de Interesse */}
               <div>
                 <label htmlFor="tipo_energia">Tipo de Energia de Interesse:</label>
                 <select 
@@ -187,50 +186,48 @@ const Saiba = () => {
                 </select>
               </div>
 
-              {/* Localização Geográfica */}
               <div>
-                <label htmlFor="localizacao">Localização Geográfica:</label>
+                <label htmlFor="localizacao_geografica">Localização Geográfica:</label>
                 <select
-                  id="localizacao"
+                  id="localizacao_geografica"
                   name="localizacao_geografica"
                   value={saiba.localizacao_geografica}
                   onChange={(e) => setSaiba({ ...saiba, localizacao_geografica: e.target.value })}
                 >
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espírito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
+                  <option value="Acre">Acre</option>
+                  <option value="Alagoas">Alagoas</option>
+                  <option value="Amapa">Amapá</option>
+                  <option value="Amazonas">Amazonas</option>
+                  <option value="Bahia">Bahia</option>
+                  <option value="Ceara">Ceará</option>
+                  <option value="Distrito Federal">Distrito Federal</option>
+                  <option value="Espirito Santo">Espírito Santo</option>
+                  <option value="Goias">Goiás</option>
+                  <option value="Maranhao">Maranhão</option>
+                  <option value="Mato Grosso">Mato Grosso</option>
+                  <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                  <option value="Minas Gerais">Minas Gerais</option>
+                  <option value="Para">Pará</option>
+                  <option value="Paraiba">Paraíba</option>
+                  <option value="Parana">Paraná</option>
+                  <option value="Pernambuco">Pernambuco</option>
+                  <option value="Piaui">Piauí</option>
+                  <option value="Rio de Janeiro">Rio de Janeiro</option>
+                  <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                  <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                  <option value="Rondonia">Rondônia</option>
+                  <option value="Roraima">Roraima</option>
+                  <option value="Santa Catarina">Santa Catarina</option>
+                  <option value="Sao Paulo">São Paulo</option>
+                  <option value="Sergipe">Sergipe</option>
+                  <option value="Tocantins">Tocantins</option>
                 </select>
               </div>
 
-              {/* Energia Mensal */}
               <div>
                 <label htmlFor="energia_mensal">Consumo Mensal de Energia (kWh):</label>
                 <input
-                  type="text"
+                  type="number"
                   id="energia_mensal"
                   name="energia_mensal"
                   value={saiba.energia_mensal}
@@ -238,7 +235,6 @@ const Saiba = () => {
                 />
               </div>
 
-              {/* Objetivo de Implementação */}
               <div>
                 <label htmlFor="obj_implementacao">Objetivo de Implementação:</label>
                 <select
@@ -253,12 +249,10 @@ const Saiba = () => {
                 </select>
               </div>
 
-
-              {/* Orçamento */}
               <div>
-                <label htmlFor="orcamento">Orçamento Aproximado(R$):</label>
+                <label htmlFor="orcamento">Orçamento Aproximado (R$):</label>
                 <input
-                  type="text"
+                  type="number"
                   id="orcamento"
                   name="orcamento"
                   value={saiba.orcamento}
@@ -266,7 +260,6 @@ const Saiba = () => {
                 />
               </div>
 
-              {/* Necessidade de Atendimento */}
               <div>
                 <label htmlFor="necessidade_atendimento">Necessidade de Atendimento:</label>
                 <select 
@@ -282,7 +275,6 @@ const Saiba = () => {
                 </select>
               </div>
 
-              {/* Necessidade de Atendimento */}
               <div>
                 <label htmlFor="usuario_es">Possui Sistema de Energia Sustentável:</label>
                 <select 
@@ -296,7 +288,6 @@ const Saiba = () => {
                 </select>
               </div>
 
-              {/* Preferência de Contato */}
               <div>
                 <label htmlFor="preferencia_contato">Preferência de Contato:</label>
                 <select 
@@ -311,7 +302,6 @@ const Saiba = () => {
                 </select>
               </div>
 
-              {/* Contato */}
               <div>
                 <label htmlFor="contato">Contato:</label>
                 <input 
@@ -323,16 +313,12 @@ const Saiba = () => {
                 />
               </div>
 
-              {/* Mensagem de feedback */}
-              <div>
-                {mensagemsaiba && <p>{mensagemsaiba}</p>}
-              </div>
-
               <button type="submit">Enviar</button>
             </fieldset>
           </form>
         </section>
       </div>
+
     </div>
   );
 };
