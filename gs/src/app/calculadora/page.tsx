@@ -156,7 +156,25 @@ const Calculadora = () => {
           <p>
             Após preencher os campos acima e clicar em "Calcular Economia", você verá aqui o valor aproximado que poderá economizar em sua conta de energia ao adotar a energia solar.
           </p>
-          <p>Economia Estimada: R$ {calculo.economia_total}</p>
+
+          <section className="formulario-calculadora">
+            <form className="form-calculadora">
+              <div>
+                <label htmlFor="economia_total">Percentual de Economia com Energia Solar (%):</label>
+                <input
+                  type="number"
+                  id="economia_total"
+                  name="economia_total"
+                  value={calculo.economia_total}
+                  onChange={handleChange}
+                  placeholder="Ex: 70"
+                  required
+                  readOnly
+                />
+              </div>
+            </form>
+          </section>
+
         </div>
 
         {mensagemFeedback && <p>{mensagemFeedback}</p>}
