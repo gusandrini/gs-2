@@ -85,7 +85,7 @@ const Calculadora = () => {
       }
     } catch (error) {
       console.error('Erro ao enviar os dados:', error);
-      setMensagemFeedback('Erro ao calcular economia.');
+      // setMensagemFeedback('Erro ao calcular economia.');
     }
   };
 
