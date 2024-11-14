@@ -89,8 +89,10 @@ export default function EditarExcluirUsuario() {
           senha: "",
         });
         setIsEditMode(false);
-        await chamadaApi();
-        navigate.push("/perfil");
+        
+        // Recarrega a página
+        window.location.reload();
+
       } else {
         throw new Error('Resposta vazia do servidor.');
       }
