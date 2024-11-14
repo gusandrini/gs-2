@@ -502,6 +502,29 @@
     }
 }
 
+/* ESTILIZAÇÃO PAGINA PERFIL */
+@layer components{
+  .editar-excluir-page {
+    @apply flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6;
+  }
+
+  .editar-excluir-page h2 {
+    @apply text-3xl font-semibold text-center text-[#3d550c] mb-8;
+  }
+
+  .editar-excluir-page p {
+    @apply text-3xl font-semibold text-center text-[#3d550c] mb-8;
+  }
+
+  .excluir {
+    @apply w-full mt-2 p-4 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c] focus:ring-2 focus:ring-[#3d550c];
+  }
+
+  .atualiza {
+    @apply w-full  p-4 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c] focus:ring-2 focus:ring-[#3d550c];
+  }
+}
+
 /* ESTILIZAÇÃO DO RODAPÉ */
 @layer components {
     footer {
@@ -536,3 +559,5 @@
     }
   }
   
+
+
