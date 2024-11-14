@@ -11,9 +11,9 @@ const Saiba = () => {
     id_es: 0,
     tp_energia: "",
     localizacao_geografica: "",
-    energia_mensal: "",
+    energia_mensal: 0,
     obj_implementacao: "",
-    orcamento: "",
+    orcamento: 0,
     necessidade_atendimento: "",
     usuario_es: "",
     preferencia_contato: "",
@@ -24,12 +24,26 @@ const Saiba = () => {
     e.preventDefault();
 
     try {
+      // Verifica e converte os valores numéricos
+      const energiaMensal = saiba.energia_mensal ? parseFloat(saiba.energia_mensal.toString()) : 0;
+      const orcamento = saiba.orcamento ? parseFloat(saiba.orcamento.toString()) : 0;
+    
       const response = await fetch("http://localhost:8080/fonte", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(saiba),
+        body: JSON.stringify({
+          tp_energia: saiba.tp_energia,
+          localizacao_geografica: saiba.localizacao_geografica,
+          energia_mensal: energiaMensal, // Converte string para float
+          obj_implementacao: saiba.obj_implementacao,
+          orcamento: orcamento, // Converte string para float
+          necessidade_atendimento: saiba.necessidade_atendimento,
+          usuario_es: saiba.usuario_es,
+          preferencia_contato: saiba.preferencia_contato,
+          contato: saiba.contato,
+        }),
       });
 
       if (response.ok) {
@@ -37,16 +51,16 @@ const Saiba = () => {
           id_es: 0,
           tp_energia: "",
           localizacao_geografica: "",
-          energia_mensal: "",
+          energia_mensal: 0,
           obj_implementacao: "",
-          orcamento: "",
+          orcamento: 0,
           necessidade_atendimento: "",
           usuario_es: "",
           preferencia_contato: "",
           contato: "",
         });
-        setMensagemSaiba("Usuário cadastrado com sucesso!");
-        router.push("/");
+        setMensagemSaiba("Cadastro realizado com sucesso!");
+        router.push("/"); // Redireciona para a página inicial após sucesso
       } else {
         const errorText = await response.text();
         const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
@@ -56,6 +70,14 @@ const Saiba = () => {
       console.error("Erro ao cadastrar:", error);
       setMensagemSaiba(`Erro ao cadastrar: ${error instanceof Error ? error.message : 'Erro no frontend.'}`);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setSaiba(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
@@ -167,158 +189,119 @@ const Saiba = () => {
             <div className="titulo-fontes-energia">
               <h1>FONTES DE ENERGIA</h1>
             </div>
-            
+
             <fieldset>
               <div>
-                <label htmlFor="tipo_energia">Tipo de Energia de Interesse:</label>
+                <label htmlFor="tp_energia">Tipo de Energia de Interesse:</label>
                 <select 
-                  id="tipo_energia" 
+                  id="tp_energia" 
                   name="tp_energia"
                   value={saiba.tp_energia}
                   onChange={(e) => setSaiba({ ...saiba, tp_energia: e.target.value })}
                 >
+                  <option value="" disabled>Selecione o tipo de energia</option>
                   <option value="solar">Energia Solar</option>
                   <option value="eolica">Energia Eólica</option>
-                  <option value="biomassa">Biomassa</option>
-                  <option value="hidreletrica">Hidrelétrica</option>
-                  <option value="geotermica">Geotérmica</option>
-                  <option value="outra">Outras</option>
+                  <option value="hidraulica">Energia Hidrelétrica</option>
+                  <option value="biomassa">Energia de Biomassa</option>
+                  <option value="geotermica">Energia Geotérmica</option>
                 </select>
               </div>
-
               <div>
                 <label htmlFor="localizacao_geografica">Localização Geográfica:</label>
-                <select
-                  id="localizacao_geografica"
-                  name="localizacao_geografica"
-                  value={saiba.localizacao_geografica}
-                  onChange={(e) => setSaiba({ ...saiba, localizacao_geografica: e.target.value })}
-                >
-                  <option value="Acre">Acre</option>
-                  <option value="Alagoas">Alagoas</option>
-                  <option value="Amapa">Amapá</option>
-                  <option value="Amazonas">Amazonas</option>
-                  <option value="Bahia">Bahia</option>
-                  <option value="Ceara">Ceará</option>
-                  <option value="Distrito Federal">Distrito Federal</option>
-                  <option value="Espirito Santo">Espírito Santo</option>
-                  <option value="Goias">Goiás</option>
-                  <option value="Maranhao">Maranhão</option>
-                  <option value="Mato Grosso">Mato Grosso</option>
-                  <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
-                  <option value="Minas Gerais">Minas Gerais</option>
-                  <option value="Para">Pará</option>
-                  <option value="Paraiba">Paraíba</option>
-                  <option value="Parana">Paraná</option>
-                  <option value="Pernambuco">Pernambuco</option>
-                  <option value="Piaui">Piauí</option>
-                  <option value="Rio de Janeiro">Rio de Janeiro</option>
-                  <option value="Rio Grande do Norte">Rio Grande do Norte</option>
-                  <option value="Rio Grande do Sul">Rio Grande do Sul</option>
-                  <option value="Rondonia">Rondônia</option>
-                  <option value="Roraima">Roraima</option>
-                  <option value="Santa Catarina">Santa Catarina</option>
-                  <option value="Sao Paulo">São Paulo</option>
-                  <option value="Sergipe">Sergipe</option>
-                  <option value="Tocantins">Tocantins</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="energia_mensal">Consumo Mensal de Energia (kWh):</label>
-                <input
-                  type="number"
-                  id="energia_mensal"
-                  name="energia_mensal"
-                  value={saiba.energia_mensal}
-                  onChange={(e) => setSaiba({ ...saiba, energia_mensal: e.target.value })}
+                <input 
+                  type="text" 
+                  id="localizacao_geografica" 
+                  name="localizacao_geografica" 
+                  placeholder="Informe a localização"
+                  value={saiba.localizacao_geografica} 
+                  onChange={handleChange} 
                 />
               </div>
-
+              <div>
+                <label htmlFor="energia_mensal">Energia Mensal:</label>
+                <input 
+                  type="number" 
+                  id="energia_mensal" 
+                  name="energia_mensal" 
+                  placeholder="kWh"
+                  value={saiba.energia_mensal} 
+                  onChange={handleChange} 
+                />
+              </div>
               <div>
                 <label htmlFor="obj_implementacao">Objetivo de Implementação:</label>
-                <select
-                  id="obj_implementacao"
+                <input 
+                  type="text" 
+                  id="obj_implementacao" 
                   name="obj_implementacao"
-                  value={saiba.obj_implementacao}
-                  onChange={(e) => setSaiba({ ...saiba, obj_implementacao: e.target.value })}
-                >
-                  <option value="rural">Rural</option>
-                  <option value="domestico">Doméstico</option>
-                  <option value="industrial">Industrial</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="orcamento">Orçamento Aproximado (R$):</label>
-                <input
-                  type="number"
-                  id="orcamento"
-                  name="orcamento"
-                  value={saiba.orcamento}
-                  onChange={(e) => setSaiba({ ...saiba, orcamento: e.target.value })}
+                  placeholder="Objetivo do uso de energia"
+                  value={saiba.obj_implementacao} 
+                  onChange={handleChange} 
                 />
               </div>
-
+              <div>
+                <label htmlFor="orcamento">Orçamento Disponível:</label>
+                <input 
+                  type="number" 
+                  id="orcamento" 
+                  name="orcamento" 
+                  placeholder="Orçamento para implementação"
+                  value={saiba.orcamento} 
+                  onChange={handleChange} 
+                />
+              </div>
               <div>
                 <label htmlFor="necessidade_atendimento">Necessidade de Atendimento:</label>
-                <select 
-                  id="necessidade_atendimento"
+                <input 
+                  type="text" 
+                  id="necessidade_atendimento" 
                   name="necessidade_atendimento"
-                  value={saiba.necessidade_atendimento}
-                  onChange={(e) => setSaiba({ ...saiba, necessidade_atendimento: e.target.value })}
-                >
-                  <option value="instalacao">Instalação</option>
-                  <option value="manutencao">Manutenção</option>
-                  <option value="consultoria">Consultoria</option>
-                  <option value="outros">Outros</option>
-                </select>
+                  placeholder="Necessidade do atendimento"
+                  value={saiba.necessidade_atendimento} 
+                  onChange={handleChange} 
+                />
               </div>
-
               <div>
-                <label htmlFor="usuario_es">Possui Sistema de Energia Sustentável:</label>
-                <select 
-                  id="usuario_es"
-                  name="usuario_es"
-                  value={saiba.usuario_es}
-                  onChange={(e) => setSaiba({ ...saiba, usuario_es: e.target.value })}
-                >
-                  <option value="sim">Sim</option>
-                  <option value="nao">Não</option>
-                </select>
+                <label htmlFor="usuario_es">Usuário:</label>
+                <input 
+                  type="text" 
+                  id="usuario_es" 
+                  name="usuario_es" 
+                  placeholder="Nome do usuário"
+                  value={saiba.usuario_es} 
+                  onChange={handleChange} 
+                />
               </div>
-
               <div>
                 <label htmlFor="preferencia_contato">Preferência de Contato:</label>
-                <select 
+                <input 
+                  type="text" 
                   id="preferencia_contato" 
                   name="preferencia_contato"
-                  value={saiba.preferencia_contato}
-                  onChange={(e) => setSaiba({ ...saiba, preferencia_contato: e.target.value })}
-                >
-                  <option value="email">Email</option>
-                  <option value="telefone">Telefone</option>
-                  <option value="whatsapp">WhatsApp</option>
-                </select>
+                  placeholder="Telefone ou e-mail"
+                  value={saiba.preferencia_contato} 
+                  onChange={handleChange} 
+                />
               </div>
-
               <div>
                 <label htmlFor="contato">Contato:</label>
                 <input 
-                  type="text"
-                  id="contato"
+                  type="text" 
+                  id="contato" 
                   name="contato"
-                  value={saiba.contato}
-                  onChange={(e) => setSaiba({ ...saiba, contato: e.target.value })}
+                  placeholder="Informe o contato"
+                  value={saiba.contato} 
+                  onChange={handleChange} 
                 />
               </div>
-
-              <button type="submit">Enviar</button>
             </fieldset>
+
+            <button type="submit">Enviar</button>
           </form>
+          {mensagemSaiba && <p>{mensagemSaiba}</p>}
         </section>
       </div>
-
     </div>
   );
 };
