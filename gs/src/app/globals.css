@@ -278,51 +278,59 @@
       @apply flex justify-start items-start ml-5 text-left text-[20px];
   }
 
-  /* Estilização do formulário principal */
+  /* Estilo da área geral do formulário */
   .energias {
-      @apply flex justify-center items-center py-10 bg-gray-100;
-  }
-  
-  .senergia {
-      @apply w-full max-w-lg p-8 bg-white rounded-lg shadow-lg;
-  }
-  
-  /* Título da seção de fontes de energia */
-  .fontes_energia h1 {
-      @apply text-3xl font-bold text-center mb-6 text-green-600;
+    @apply w-full max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg;
   }
 
-  /* Estilos do campo de entrada no formulário */
-  .fenergia fieldset {
-      @apply space-y-6;
+  /* Estilo da seção do formulário */
+  .section-energia {
+    @apply w-full;
   }
 
-  /* Estilo dos labels */
-  .fenergia label {
-      @apply block text-lg font-medium text-gray-700;
+  /* Estilo do título das fontes de energia */
+  .titulo-fontes-energia h1 {
+    @apply text-3xl font-bold text-[#3d550c] text-center mb-6;
   }
 
-  /* Estilo dos campos de entrada (text, number, email, select) */
-  .fenergia input[type="text"],
-  .fenergia input[type="number"],
-  .fenergia input[type="email"],
-  .fenergia select {
-      @apply w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent;
+  /* Estilo do formulário */
+  .formulario-energia {
+    @apply space-y-6;
   }
 
-  /* Estilo do select (lista suspensa) */
-  .fenergia select {
-      @apply bg-white;
+  /* Estilo dos campos de seleção e input */
+  .formulario-energia select,
+  .formulario-energia input {
+    @apply w-full p-4 text-gray-700 border border-[#3d550c] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3d550c];
   }
 
   /* Estilo do botão de envio */
-  .center .botao_submit {
-      @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
+  .formulario-energia button {
+    @apply w-full p-4 bg-[#81b622] text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c] focus:ring-2 focus:ring-[#3d550c];
   }
 
-  /* Estilo do botão de envio */
-  .calcular{
-    @apply  w-full mt-3 py-4 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c];
+  /* Estilo das mensagens */
+  .mensagem {
+    @apply text-center mt-4;
+  }
+
+  /* Estilo das mensagens de erro e sucesso */
+  .mensagem.erro {
+    @apply text-red-500;
+  }
+
+  .mensagem.sucesso {
+    @apply text-green-500;
+  }
+
+  /* Estilo dos campos de entrada (input e select) dentro do formulário */
+  .formulario-energia label {
+    @apply block text-[#3d550c] font-medium mb-2;
+  }
+
+  /* Espaçamento entre os campos */
+  .formulario-energia div {
+    @apply space-y-2;
   }
 }
 
@@ -376,6 +384,11 @@
   /* Alinhamento centralizado */
   .form-calculadora .center {
     @apply flex justify-center;
+  }
+
+  /* Estilo do botão de envio */
+  .calcular{
+    @apply  w-full mt-3 py-4 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c];
   }
 }
 
