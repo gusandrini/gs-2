@@ -1,7 +1,48 @@
+"use client"
+import { TipoContato } from '@/types/types';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contato = () => {
+  const [mensagemCadastro, setMensagemCadastro] = useState('');
+  const [consultoria, setConsultoria] = useState<TipoContato>({
+    id_consultoria: 0,
+    duvidas: "",
+    email_usuario: "",
+    nome_usuario: "",
+  });
+
+  // Tornar a função assíncrona
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:8080/consultoria', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(consultoria),
+      });
+
+      if (response.ok) {
+        // Limpar os campos após o envio
+        setConsultoria({
+          id_consultoria: 0,
+          duvidas: "",
+          email_usuario: "",
+          nome_usuario: "",
+        });
+        setMensagemCadastro("Mensagem enviada com sucesso!");
+      } else {
+        alert('Ocorreu um erro ao enviar a mensagem.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      alert('Ocorreu um erro na requisição.');
+    }
+  };
+
   return (
     <div>
       <div className="paginas">
@@ -18,17 +59,20 @@ const Contato = () => {
 
       <div className="contato">
         <section className="stato">
-          <form className="ftato">
+          <form className="ftato" onSubmit={handleSubmit}>
             <div className="consultoria_online">
               <h1>CONSULTORIA ONLINE</h1>
             </div>
             <fieldset>
               <div>
-                <label htmlFor="name">Nome:</label>
+                <label htmlFor="nome">Nome:</label>
                 <input 
                   type="text"
                   id="nome"
+                  name="nome_usuario"
                   placeholder="Digite seu nome"
+                  value={consultoria.nome_usuario}
+                  onChange={(e) => setConsultoria({ ...consultoria, nome_usuario: e.target.value })}
                 />
               </div>
 
@@ -37,16 +81,21 @@ const Contato = () => {
                 <input 
                   type="email"
                   id="email"
+                  name="email_usuario"
                   placeholder="Digite seu email para contato"
+                  value={consultoria.email_usuario}
+                  onChange={(e) => setConsultoria({ ...consultoria, email_usuario: e.target.value })}
                 />
               </div>
 
               <div>
-                <label htmlFor="duvidas">Dúvidas:</label>
-                <input
-                  type="message"
-                  id="message"
+                <label htmlFor="mensagem">Dúvidas:</label>
+                <textarea
+                  id="mensagem"
+                  name="duvidas"
                   placeholder="Digite sua dúvida"
+                  value={consultoria.duvidas}
+                  onChange={(e) => setConsultoria({ ...consultoria, duvidas: e.target.value })}
                   autoComplete="off"
                 />
               </div>
@@ -58,6 +107,8 @@ const Contato = () => {
           </form>
         </section>
       </div>
+
+      {mensagemCadastro && <div className="mensagem-sucesso">{mensagemCadastro}</div>}
 
       <div className="informacoes_contato">
         <h1>Informações de contato</h1>
@@ -122,6 +173,6 @@ const Contato = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Contato;

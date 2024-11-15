@@ -27,3 +27,10 @@ export type TipoConta = {
     economia_es: string;
     economia_total: string;
 }
+
+export type TipoContato = {
+    id_consultoria: number,
+    nome_usuario: string,
+    email_usuario: string,
+    duvidas: string;
+}
