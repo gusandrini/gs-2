@@ -167,7 +167,7 @@ const Calculadora = () => {
                 />
               </div>
 
-              <div>
+              <div className='calcular'>
                 <button type="submit" disabled={isLoading}>
                   {isLoading ? 'Calculando...' : 'Calcular Economia'}
                 </button>

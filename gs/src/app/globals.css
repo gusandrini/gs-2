@@ -3,37 +3,35 @@
 @tailwind utilities;
 
 @layer base {
-    *{
-      @apply m-0 p-0 box-border no-underline
+    * {
+        @apply m-0 p-0 box-border no-underline;
     }
+    
     img {
-      width: auto;
-      max-width: 100%;
+        width: auto;
+        max-width: 100%;
     }
-  }
+}
 
-/* ESTILIZAÇÃO PADRÃO DOS LINKS PARA HOME*/
+/* Estilização padrão dos links para Home */
 @layer components {
     .paginas {
-      @apply flex justify-start m-10 mt-10 ml-[60px] text-[50px] text-[#3d550c];
+        @apply flex justify-start m-10 mt-10 ml-[60px] text-[50px] text-[#3d550c];
     }
-  }
 
-/* ESTILIZAÇÃO DO CABECALHO */
-@layer components {
-  .login_inicio,
-  .perfil_inicio {
-    @apply flex justify-start items-start mx-16;
-}
+    /* Estilização do cabeçalho */
+    .login_inicio,
+    .perfil_inicio {
+        @apply flex justify-start items-start mx-16;
+    }
 
-/* Estilos compartilhados para os botões */
-.botao_inicio {
-    @apply flex justify-center items-center m-2 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622] w-16;
-}
+    /* Estilos compartilhados para os botões */
+    .botao_inicio {
+        @apply flex justify-center items-center m-2 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622] w-16;
+    }
 
-
-    .foto_menu{
-        @apply flex justify-center items-center
+    .foto_menu {
+        @apply flex justify-center items-center;
     }
 
     .menu {
@@ -49,110 +47,121 @@
     }
 
     .menu ul li {
-        @apply flex justify-center items-center  rounded-[10px] p-5 shadow-md bg-[#3d550c] w-[300px];
+        @apply flex justify-center items-center rounded-[10px] p-5 shadow-md bg-[#3d550c] w-[300px];
     }
 
     .menu ul li a {
         @apply text-[25px] text-[#81b622];
     }
-}
 
-/* ESTILIZAÇÃO A PÁGINA INICIAL*/
-
-@layer components{
-    .cards{
-        @apply flex flex-row justify-center items-center ;
+    /* Estilização da página inicial */
+    .cards {
+        @apply flex flex-row justify-center items-center;
     }
 
     .energia, 
     .calculadora,
-    .projetos{
-        @apply flex-row justify-evenly m-10 p-5 w-[100%]  shadow-2xl bg-gray-800
+    .projetos {
+        @apply flex-row justify-evenly m-10 p-5 w-[100%] shadow-2xl bg-gray-800;
     }
 
     .energia img, 
     .calculadora img,
-    .projetos img{
-        @apply block rounded-[10px]
+    .projetos img {
+        @apply block rounded-[10px];
     }
 
     .energia a, 
     .calculadora a,
-    .projetos a{
+    .projetos a {
         @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
     }
 }
 
-/* ESTILIZAÇÃO A PÁGINA SOBRE NÓS*/
 
-@layer components{
+/* Estilização da página SOBRE NÓS */
 
-    .introducao_sobre h1,
-    .nossa_historia h1,
-    .nossa_equipe_titulo h1,
-    .parceirias_colaboracoes h1,
-    .junte h1{
-        @apply flex justify-start items-start ml-5 text-[50px]
-    }
-    .introducao_sobre p,
-    .nossa_historia p,
-    .parceirias_colaboracoes p,
-    .junte p{
-        @apply flex justify-start items-start ml-5 text-left text-[20px]
-    }
+@layer components {
 
-    .nossa_equipe{
-        @apply flex flex-row justify-center items-center ;
-    }
+  /* Títulos das seções */
+  .introducao_sobre h1,
+  .nossa_historia h1,
+  .nossa_equipe_titulo h1,
+  .parceirias_colaboracoes h1,
+  .junte h1 {
+      @apply flex justify-start items-start ml-5 text-[50px];
+  }
 
-    .duda, 
-    .gu,
-    .vi{
-        @apply flex-row items-center justify-evenly m-20 p-9 w-[100%]  shadow-2xl bg-gray-800
-    }
+  /* Parágrafos das seções */
+  .introducao_sobre p,
+  .nossa_historia p,
+  .parceirias_colaboracoes p,
+  .junte p {
+      @apply flex justify-start items-start ml-5 text-left text-[20px];
+  }
 
-    .duda img, 
-    .gu img,
-    .vi img{
-        @apply flex justify-center items-center rounded-[10px] w-[500px] h-[480px]
-    }
+  /* Estilização da nossa equipe */
+  .nossa_equipe {
+      @apply flex flex-row justify-center items-center;
+  }
 
-    .duda p, 
-    .gu p,
-    .vi p{
-        @apply flex justify-center items-center p-[5px] border border-solid rounded-[10px] mt-5 text-gray-800 text-center bg-white;
-    }
+  /* Estilos para os membros da equipe */
+  .duda, 
+  .gu,
+  .vi {
+      @apply flex-row items-center justify-evenly m-20 p-9 w-[100%] shadow-2xl bg-gray-800;
+  }
+
+  /* Estilização das imagens dos membros */
+  .duda img, 
+  .gu img,
+  .vi img {
+      @apply flex justify-center items-center rounded-[10px] w-[500px] h-[480px];
+  }
+
+  /* Estilização das descrições dos membros */
+  .duda p, 
+  .gu p,
+  .vi p {
+      @apply flex justify-center items-center p-[5px] border border-solid rounded-[10px] mt-5 text-gray-800 text-center bg-white;
+  }
+
 }
 
-/* ESTILIZAÇÃO A PÁGINA BLOG*/
 
-@layer components{
-    .introducao_blog h1,
-    .guia_rapido h1,
-    .beneficios h1,
-    .como_comecar h1,
-    .economia h1,
-    .dicas h1,
-    .incentivos h1{
-        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
-    }
+/* Estilização da página BLOG */
 
-    .introducao_blog h2,
-    .guia_rapido h2,
-    .dicas h2{
-        @apply flex justify-start items-start ml-5 text-[30px]
-    }
+@layer components {
+  /* Títulos das seções */
+  .introducao_blog h1,
+  .guia_rapido h1,
+  .beneficios h1,
+  .como_comecar h1,
+  .economia h1,
+  .dicas h1,
+  .incentivos h1 {
+      @apply flex justify-start items-start ml-5 mt-5 text-[45px];
+  }
 
-    .introducao_blog p,
-    .guia_rapido p,
-    .beneficios p,
-    .como_comecar p,
-    .economia p,
-    .dicas p,
-    .incentivos p{
-        @apply flex justify-start items-start ml-5 text-left text-[20px]
-    }
+  /* Subtítulos das seções */
+  .introducao_blog h2,
+  .guia_rapido h2,
+  .dicas h2 {
+      @apply flex justify-start items-start ml-5 text-[30px];
+  }
+
+  /* Parágrafos das seções */
+  .introducao_blog p,
+  .guia_rapido p,
+  .beneficios p,
+  .como_comecar p,
+  .economia p,
+  .dicas p,
+  .incentivos p {
+      @apply flex justify-start items-start ml-5 text-left text-[20px];
+  }
 }
+
 
 /* ESTILIZAÇÃO A PÁGINA DE DESAFIO*/
 
@@ -176,133 +185,147 @@
     }
 }
 
-/* ESTILIZAÇÃO A PÁGINA DE CONTATO*/
+/* Estilização da página de CONTATO */
 
-@layer components{
-    .introducao_contato h1,
-    .informacoes_contato h1,
-    .porque_contato h1,
-    .faq h1{
-        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
-    }
+@layer components {
+  /* Títulos das seções */
+  .introducao_contato h1,
+  .informacoes_contato h1,
+  .porque_contato h1,
+  .faq h1 {
+      @apply flex justify-start items-start ml-5 mt-5 text-[45px];
+  }
 
-    .introducao_contato p,
-    .informacoes_contato p,
-    .porque_contato p,
-    .faq p{
-        @apply flex justify-start items-start ml-5 text-left text-[20px]
-    }
+  /* Parágrafos das seções */
+  .introducao_contato p,
+  .informacoes_contato p,
+  .porque_contato p,
+  .faq p {
+      @apply flex justify-start items-start ml-5 text-left text-[20px];
+  }
 
-    .contato {
-        @apply flex justify-center items-center py-7 bg-gray-100 ;
-    }
-    
-    .stato {
-        @apply w-full max-w-lg bg-white p-8 rounded-lg shadow-lg;
-    }
-    
-    .consultoria_online h1 {
-        @apply text-2xl font-semibold text-green-600 text-center mb-6;
-    }
-    
-    .ftato {
-        @apply space-y-4;
-    }
-    
-    /* Estilo dos campos de formulário */
-    .ftato label {
-        @apply block text-gray-700 font-medium mb-2;
-    }
-    
-    .ftato input[type="text"],
-    .ftato input[type="email"],
-    .ftato input[type="message"] {
-        @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500;
-    }
-    
-    /* Estilo para o botão de envio */
-    .botao_submit {
-        @apply w-full py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-200 ease-in-out;
-    }
-    
-    /* Centralizar os botões e adicionar espaçamento ao campo de mensagem */
-    .center {
-        @apply flex justify-center mt-6;
-    }
+  /* Estilização da seção de contato */
+  .contato {
+      @apply flex justify-center items-center py-7 bg-gray-100;
+  }
+  
+  /* Estilização do formulário de contato */
+  .stato {
+      @apply w-full max-w-lg bg-white p-8 rounded-lg shadow-lg;
+  }
+  
+  /* Estilo do título da consultoria online */
+  .consultoria_online h1 {
+      @apply text-2xl font-semibold text-[#3d550c] text-center mb-6;
+  }
+
+  /* Estilização dos campos do formulário */
+  .ftato {
+      @apply space-y-4;
+  }
+  
+  /* Estilo dos labels */
+  .ftato label {
+      @apply block text-gray-700 font-medium mb-2;
+  }
+  
+  /* Estilo dos inputs de texto, email e mensagem */
+  .ftato input[type="text"],
+  .ftato input[type="email"],
+  .ftato input[type="message"] {
+      @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500;
+  }
+  
+  /* Estilo do botão de envio */
+  .botao_submit {
+    @apply  w-full mt-3 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c];
+  }
 }
 
-/* ESTILIZAÇÃO A PÁGINA DE SAIBA MAIS*/
 
-@layer components{
-    .introducao_saiba h1,
-    .princi_fontes h1,
-    .beneficios h1,
-    .impacto h1,
-    .iniciativas h1,
-    .porque_investir h1,
-    .use h1{
-        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
-    }
+/* Estilização da página SAIBA MAIS */
 
-    .solar h2,
-    .eolica h2,
-    .biomassa h2,
-    .hidraeletrica h2,
-    .btn_atualizar h2,
-    .geotermica h2{
-        @apply flex justify-start items-start ml-5 text-[30px]
-    }
+@layer components {
+  /* Títulos principais das seções */
+  .introducao_saiba h1,
+  .princi_fontes h1,
+  .beneficios h1,
+  .impacto h1,
+  .iniciativas h1,
+  .porque_investir h1,
+  .use h1 {
+      @apply flex justify-start items-start ml-5 mt-5 text-[45px];
+  }
 
-    .introducao_saiba p,
-    .princi_fontes p,
-    .beneficios p,
-    .impacto p,
-    .iniciativas p,
-    .btn_atualizar button,
-    .porque_investir p{
-        @apply flex justify-start items-start ml-5 text-left text-[20px]
-    }
+  /* Subtítulos das fontes de energia */
+  .solar h2,
+  .eolica h2,
+  .biomassa h2,
+  .hidraeletrica h2,
+  .btn_atualizar h2,
+  .geotermica h2 {
+      @apply flex justify-start items-start ml-5 text-[30px];
+  }
 
-    /* Estilização do formulário principal */
-    .energias {
-        @apply flex justify-center items-center py-10 bg-gray-100;
-    }
-    
-    .senergia {
-        @apply w-full max-w-lg p-8 bg-white rounded-lg shadow-lg;
-    }
-    
-    .fontes_energia h1 {
-        @apply text-3xl font-bold text-center mb-6 text-green-600;
-    }
-    
-    .fenergia fieldset {
-        @apply space-y-6;
-    }
-    
-    /* Estilo dos labels e campos de entrada */
-    .fenergia label {
-        @apply block text-lg font-medium text-gray-700;
-    }
-    
-    .fenergia input[type="text"],
-    .fenergia input[type="number"],
-    .fenergia input[type="email"],
-    .fenergia select {
-        @apply w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent;
-    }
-    
-    /* Estilo do select (lista suspensa) */
-    .fenergia select {
-        @apply bg-white;
-    }
-    
-    /* Estilo do botão de envio */
-    .center .botao_submit {
-        @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
-    }
+  /* Parágrafos das seções */
+  .introducao_saiba p,
+  .princi_fontes p,
+  .beneficios p,
+  .impacto p,
+  .iniciativas p,
+  .btn_atualizar button,
+  .porque_investir p {
+      @apply flex justify-start items-start ml-5 text-left text-[20px];
+  }
 
+  /* Estilização do formulário principal */
+  .energias {
+      @apply flex justify-center items-center py-10 bg-gray-100;
+  }
+  
+  .senergia {
+      @apply w-full max-w-lg p-8 bg-white rounded-lg shadow-lg;
+  }
+  
+  /* Título da seção de fontes de energia */
+  .fontes_energia h1 {
+      @apply text-3xl font-bold text-center mb-6 text-green-600;
+  }
+
+  /* Estilos do campo de entrada no formulário */
+  .fenergia fieldset {
+      @apply space-y-6;
+  }
+
+  /* Estilo dos labels */
+  .fenergia label {
+      @apply block text-lg font-medium text-gray-700;
+  }
+
+  /* Estilo dos campos de entrada (text, number, email, select) */
+  .fenergia input[type="text"],
+  .fenergia input[type="number"],
+  .fenergia input[type="email"],
+  .fenergia select {
+      @apply w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent;
+  }
+
+  /* Estilo do select (lista suspensa) */
+  .fenergia select {
+      @apply bg-white;
+  }
+
+  /* Estilo do botão de envio */
+  .center .botao_submit {
+      @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
+  }
+
+  /* Estilo do botão de envio */
+  .calcular{
+    @apply  w-full mt-3 py-4 bg-[#81b622] text-center text-white font-semibold rounded-md transition-colors hover:bg-[#3d550c];
+  }
 }
+
 
 /* ESTILIZAÇÃO A PÁGINA CALCULADORA*/
 
