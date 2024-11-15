@@ -60,7 +60,10 @@ const Saiba = () => {
           contato: "",
         });
         setMensagemSaiba("Cadastro realizado com sucesso!");
-        router.push("/"); // Redireciona para a página inicial após sucesso
+        setTimeout(() => {
+          router.push("/"); // Redireciona após 3 segundos
+        }, 3000);
+
       } else {
         const errorText = await response.text();
         const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
