@@ -209,17 +209,45 @@ const Saiba = () => {
               </div>
               <div>
                 <label htmlFor="localizacao_geografica">Localização Geográfica:</label>
-                <input 
-                  type="text" 
+                <select 
                   id="localizacao_geografica" 
-                  name="localizacao_geografica" 
-                  placeholder="Informe a localização"
+                  name="localizacao_geografica"
                   value={saiba.localizacao_geografica} 
-                  onChange={handleChange} 
-                />
+                  onChange={(e) => setSaiba({ ...saiba, localizacao_geografica: e.target.value })}
+                >
+                  <option value="" disabled>Selecione o estado</option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
+                </select>
               </div>
+
               <div>
-                <label htmlFor="energia_mensal">Energia Mensal:</label>
+                <label htmlFor="energia_mensal">Consumo de Energia Mensal(kWh):</label>
                 <input 
                   type="number" 
                   id="energia_mensal" 
@@ -231,17 +259,22 @@ const Saiba = () => {
               </div>
               <div>
                 <label htmlFor="obj_implementacao">Objetivo de Implementação:</label>
-                <input 
-                  type="text" 
+                <select 
                   id="obj_implementacao" 
-                  name="obj_implementacao"
-                  placeholder="Objetivo do uso de energia"
+                  name="obj_implementacao" 
                   value={saiba.obj_implementacao} 
-                  onChange={handleChange} 
-                />
+                  onChange={(e) => setSaiba({ ...saiba, obj_implementacao: e.target.value })}
+                >
+                  <option value="" disabled>Selecione o objetivo</option>
+                  <option value="Industrial">Industrial</option>
+                  <option value="Doméstico">Doméstico</option>
+                  <option value="Rural">Rural</option>
+                  <option value="Outros">Outros</option>
+                </select>
               </div>
+
               <div>
-                <label htmlFor="orcamento">Orçamento Disponível:</label>
+                <label htmlFor="orcamento">Orçamento Aproximado:</label>
                 <input 
                   type="number" 
                   id="orcamento" 
@@ -251,39 +284,52 @@ const Saiba = () => {
                   onChange={handleChange} 
                 />
               </div>
+
               <div>
-                <label htmlFor="necessidade_atendimento">Necessidade de Atendimento:</label>
-                <input 
-                  type="text" 
-                  id="necessidade_atendimento" 
-                  name="necessidade_atendimento"
-                  placeholder="Necessidade do atendimento"
-                  value={saiba.necessidade_atendimento} 
-                  onChange={handleChange} 
-                />
-              </div>
-              <div>
-                <label htmlFor="usuario_es">Usuário:</label>
-                <input 
-                  type="text" 
+                <label htmlFor="usuario_es">Possui energia sustentável:</label>
+                <select 
                   id="usuario_es" 
                   name="usuario_es" 
-                  placeholder="Nome do usuário"
                   value={saiba.usuario_es} 
-                  onChange={handleChange} 
-                />
+                  onChange={(e) => setSaiba({ ...saiba, usuario_es: e.target.value })}
+                >
+                  <option value="" disabled>Selecione uma opção</option>
+                  <option value="Sim">Sim</option>
+                  <option value="Não">Não</option>
+                </select>
               </div>
+
+              <div>
+                <label htmlFor="necessidade_atendimento">Necessidade de Atendimento:</label>
+                <select 
+                  id="necessidade_atendimento" 
+                  name="necessidade_atendimento" 
+                  value={saiba.necessidade_atendimento} 
+                  onChange={(e) => setSaiba({ ...saiba, necessidade_atendimento: e.target.value })}
+                >
+                  <option value="" disabled>Selecione a necessidade</option>
+                  <option value="Manutenção">Manutenção</option>
+                  <option value="Instalação">Instalação</option>
+                  <option value="Adaptação">Adaptação</option>
+                  <option value="Dúvidas">Dúvidas</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+
               <div>
                 <label htmlFor="preferencia_contato">Preferência de Contato:</label>
-                <input 
-                  type="text" 
+                <select 
                   id="preferencia_contato" 
                   name="preferencia_contato"
-                  placeholder="Telefone ou e-mail"
                   value={saiba.preferencia_contato} 
-                  onChange={handleChange} 
-                />
+                  onChange={(e) => setSaiba({ ...saiba, preferencia_contato: e.target.value })}
+                >
+                  <option value="" disabled>Selecione uma opção</option>
+                  <option value="Telefone">Telefone</option>
+                  <option value="Email">E-mail</option>
+                </select>
               </div>
+
               <div>
                 <label htmlFor="contato">Contato:</label>
                 <input 
