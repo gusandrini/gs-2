@@ -15,7 +15,7 @@ const Inicial = () => {
           src={Energia}
           alt='Energia sustentável'
           />
-          <Link className="btn_energia" href="/saiba-mais">O que é Energia Sustentável?</Link>
+          <Link className="btn_energia" href="/saiba-mais">Use energia sustentável</Link>
         </div>
 
         <div className="calculadora">
