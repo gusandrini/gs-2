@@ -248,6 +248,7 @@
     .eolica h2,
     .biomassa h2,
     .hidraeletrica h2,
+    .btn_atualizar h2,
     .geotermica h2{
         @apply flex justify-start items-start ml-5 text-[30px]
     }
@@ -257,6 +258,7 @@
     .beneficios p,
     .impacto p,
     .iniciativas p,
+    .btn_atualizar button,
     .porque_investir p{
         @apply flex justify-start items-start ml-5 text-left text-[20px]
     }
@@ -299,6 +301,7 @@
     .center .botao_submit {
         @apply w-full mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out;
     }
+
 }
 
 /* ESTILIZAÇÃO A PÁGINA CALCULADORA*/

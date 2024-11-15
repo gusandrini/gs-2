@@ -92,15 +92,24 @@ const Calculadora = () => {
       const data = await response.json();
       if (data.success) {
         setMensagemFeedback('Cálculo realizado com sucesso!');
-
-      } else {
-        // setMensagemFeedback('Erro ao realizar o cálculo.');
       }
     } catch (error) {
       console.error('Erro ao enviar os dados:', error);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Função para resetar os campos e o estado para permitir novo cálculo
+  const novoCalculo = () => {
+    setCalculo({
+      id_economia: 0,
+      consumo_mensal_energia: '',
+      custo_energia: '',
+      economia_es: '',
+      economia_total: '',
+    });
+    setMensagemFeedback(''); // Limpa qualquer mensagem de feedback
   };
 
   return (
@@ -173,6 +182,12 @@ const Calculadora = () => {
             Após preencher os campos acima e clicar em "Calcular Economia", você verá aqui o valor aproximado que poderá economizar em sua conta de energia ao adotar a energia solar.
           </p>
           <p>Economia Mensal Estimada: R$ <span id="resultado-mensal">{calculo.economia_total}</span></p>
+        </div>
+
+        {/* Botão para novo cálculo */}
+        <div className='btn_atualizar'>
+          <h2>Deseja fazer outro cálculo?</h2>
+          <button  onClick={novoCalculo}>Clique aqui</button>
         </div>
       </div>
     </div>
