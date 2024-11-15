@@ -21,4 +21,4 @@ oferecer aos usuários uma maneira simples e eficiente de calcular economia de e
 fornecer ferramentas práticas que permitam às pessoas e empresas integrar a sustentabilidade em suas rotinas, contribuindo para um futuro mais verde e sustentável.
 
 # Link repositório java
-
+https://github.com/dudatiemiak/gs2.git
