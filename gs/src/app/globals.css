@@ -15,74 +15,166 @@
 
 /* Estilização padrão dos links para Home */
 @layer components {
-    .paginas {
-        @apply flex justify-start m-10 mt-10 ml-[60px] text-[50px] text-[#3d550c];
-    }
+  .paginas {
+      @apply flex justify-start m-10 mt-10 ml-[60px] text-[50px] text-[#3d550c];
+  }
 
-    /* Estilização do cabeçalho */
-    .login_inicio,
-    .perfil_inicio {
-        @apply flex justify-start items-start mx-16;
-    }
+  /* Estilização do cabeçalho */
+  .login_inicio,
+  .perfil_inicio {
+      @apply flex justify-start items-start mx-16;
+  }
 
-    /* Estilos compartilhados para os botões */
-    .botao_inicio {
-        @apply flex justify-center items-center m-2 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622] w-16;
-    }
+  /* Estilos compartilhados para os botões */
+  .botao_inicio {
+      @apply flex justify-center items-center m-2 p-2 border-[3px] border-[#3d550c] border-solid rounded-[10px] text-[#81b622] w-16;
+  }
 
-    .foto_menu {
-        @apply flex justify-center items-center;
-    }
+  .foto_menu {
+      @apply flex justify-center items-center m-5;
+  }
 
-    .menu {
-        @apply m-auto py-10 transition-transform duration-700 ease-in-out;
-        
-        &:hover {
-            @apply scale-110;
-        }
-    }
+  .menu {
+      @apply m-auto py-10 transition-transform duration-700 ease-in-out;
 
-    .menu ul {
-        @apply flex items-center justify-center gap-10 px-20;
-    }
+      &:hover {
+          @apply scale-110;
+      }
+  }
 
-    .menu ul li {
-        @apply flex justify-center items-center rounded-[10px] p-5 shadow-md bg-[#3d550c] w-[300px];
-    }
+  .menu ul {
+      @apply flex items-center justify-center gap-10 px-20;
+  }
 
-    .menu ul li a {
-        @apply text-[25px] text-[#81b622];
-    }
+  .menu ul li {
+      @apply flex justify-center items-center rounded-[10px] p-5 shadow-md bg-[#3d550c] w-[300px];
+  }
 
-    /* Estilização da página inicial */
-    .cards {
-        @apply flex flex-row justify-center items-center;
-    }
+  .menu ul li a {
+      @apply text-[25px] text-[#81b622];
+  }
 
-    .energia, 
-    .calculadora,
-    .projetos {
-        @apply flex-row justify-evenly m-10 p-5 w-[100%] shadow-2xl bg-gray-800;
-    }
+  /* Estilização da página inicial */
+  .cards {
+      @apply flex flex-row justify-center items-center;
+  }
 
-    .energia img, 
-    .calculadora img,
-    .projetos img {
-        @apply block rounded-[10px];
-    }
+  .energia,
+  .calculadora,
+  .projetos {
+      @apply flex-row justify-evenly m-10 p-5 w-[100%] shadow-2xl bg-gray-800;
+  }
 
-    .energia a, 
-    .calculadora a,
-    .projetos a {
-        @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
-    }
+  .energia img,
+  .calculadora img,
+  .projetos img {
+      @apply block rounded-[10px];
+  }
+
+  .energia a,
+  .calculadora a,
+  .projetos a {
+      @apply flex justify-center items-center p-[5px] border border-blue-900 border-solid rounded-[10px] mt-5 text-gray-800 bg-white;
+  }
+}
+
+/* Estilos responsivos */
+
+/* Telas entre 650px e 1024px */
+@media (min-width: 650px) and (max-width: 1024px) {
+  .paginas {
+      @apply text-[40px] ml-[30px];
+  }
+
+  .menu ul li a {
+    @apply text-[20px];
+}
+
+  .menu ul li {
+      @apply w-[250px] p-4;
+  }
+
+  .menu ul {
+      @apply gap-5 px-10;
+  }
+
+  .botao_inicio {
+      @apply w-12;
+  }
+
+  .cards {
+    @apply flex-col m-20
+  }
+
+  .energia, 
+  .calculadora, 
+  .projetos {
+      @apply flex-col justify-center items-center;
+  }
+}
+
+/* Telas maiores que 1025px */
+@media (min-width: 1025px) {
+  .paginas {
+      @apply text-[60px] ml-[80px];
+  }
+
+  .menu ul li a {
+    @apply text-[15px];
+}
+
+  .menu ul li {
+      @apply w-[350px];
+  }
+
+  .menu ul {
+      @apply gap-10 px-32;
+  }
+
+  .energia, 
+  .calculadora, 
+  .projetos {
+      @apply flex-row justify-between;
+  }
+}
+
+/* Telas menores que 900px */
+@media (max-width: 900px) {
+  .paginas {
+      @apply text-[30px] ml-[10px];
+  }
+  .login_inicio,
+  .perfil_inicio{
+    @apply m-4
+  }
+  
+  .foto_menu{
+    @apply flex-col px-4
+  }
+
+  .menu ul li {
+      @apply w-[200px] p-3;
+  }
+
+  .menu ul {
+      @apply flex-col gap-5 px-5;
+  }
+
+  .cards {
+      @apply flex-col items-center gap-5;
+  }
+
+  .energia,
+  .calculadora,
+  .projetos {
+      @apply flex-col items-center m-5 p-3 w-[90%];
+  }
 }
 
 
+
 /* Estilização da página SOBRE NÓS */
-
 @layer components {
-
   /* Títulos das seções */
   .introducao_sobre h1,
   .nossa_historia h1,
@@ -125,8 +217,110 @@
   .vi p {
       @apply flex justify-center items-center p-[5px] border border-solid rounded-[10px] mt-5 text-gray-800 text-center bg-white;
   }
-
 }
+
+/* Estilos responsivos */
+
+/* Telas entre 650px e 1024px */
+@media (min-width: 650px) and (max-width: 1024px) {
+  .introducao_sobre h1,
+  .nossa_historia h1,
+  .nossa_equipe_titulo h1,
+  .parceirias_colaboracoes h1,
+  .junte h1 {
+      @apply text-[40px] ml-4;
+  }
+
+  .introducao_sobre p,
+  .nossa_historia p,
+  .parceirias_colaboracoes p,
+  .junte p {
+      @apply text-[18px] ml-4;
+  }
+
+  .duda, 
+  .gu, 
+  .vi {
+      @apply flex-col m-5 p-3 w-[75%];
+  }
+
+  .duda img, 
+  .gu img, 
+  .vi img {
+      @apply w-[300px] h-[280px];
+  }
+
+  
+}
+
+/* Telas maiores que 1025px */
+@media (min-width: 1025px) {
+  .introducao_sobre h1,
+  .nossa_historia h1,
+  .nossa_equipe_titulo h1,
+  .parceirias_colaboracoes h1,
+  .junte h1 {
+      @apply text-[50px] ml-5;
+  }
+
+  .introducao_sobre p,
+  .nossa_historia p,
+  .parceirias_colaboracoes p,
+  .junte p {
+      @apply text-[20px] ml-5;
+  }
+
+  .nossa_equipe {
+      @apply flex-nowrap;
+  }
+
+  .duda img, 
+  .gu img, 
+  .vi img {
+      @apply w-[500px] h-[480px];
+  }
+
+  .duda, 
+  .gu, 
+  .vi {
+      @apply flex-row w-[100%];
+  }
+}
+
+/* Telas menores que 900px */
+@media (max-width: 900px) {
+  .introducao_sobre h1,
+  .nossa_historia h1,
+  .nossa_equipe_titulo h1,
+  .parceirias_colaboracoes h1,
+  .junte h1 {
+      @apply text-[30px] ml-2;
+  }
+
+  .introducao_sobre p,
+  .nossa_historia p,
+  .parceirias_colaboracoes p,
+  .junte p {
+      @apply text-[16px] ml-2;
+  }
+
+  .nossa_equipe {
+      @apply flex-col items-center;
+  }
+
+  .duda, 
+  .gu, 
+  .vi {
+      @apply flex-col m-5 p-3 w-[50%];
+  }
+
+  .duda img, 
+  .gu img, 
+  .vi img {
+      @apply w-[400px] h-[280px];
+  }
+}
+
 
 
 /* Estilização da página BLOG */
@@ -162,6 +356,94 @@
   }
 }
 
+/* Estilos responsivos */
+
+/* Telas entre 650px e 1024px */
+@media (min-width: 650px) and (max-width: 1024px) {
+  .introducao_blog h1,
+  .guia_rapido h1,
+  .beneficios h1,
+  .como_comecar h1,
+  .economia h1,
+  .dicas h1,
+  .incentivos h1 {
+      @apply text-[35px] ml-4 mt-4;
+  }
+
+  .introducao_blog h2,
+  .guia_rapido h2,
+  .dicas h2 {
+      @apply text-[25px] ml-4;
+  }
+
+  .introducao_blog p,
+  .guia_rapido p,
+  .beneficios p,
+  .como_comecar p,
+  .economia p,
+  .dicas p,
+  .incentivos p {
+      @apply text-[18px] ml-4;
+  }
+}
+
+/* Telas maiores que 1025px */
+@media (min-width: 1025px) {
+  .introducao_blog h1,
+  .guia_rapido h1,
+  .beneficios h1,
+  .como_comecar h1,
+  .economia h1,
+  .dicas h1,
+  .incentivos h1 {
+      @apply text-[50px] ml-5 mt-5;
+  }
+
+  .introducao_blog h2,
+  .guia_rapido h2,
+  .dicas h2 {
+      @apply text-[35px] ml-5;
+  }
+
+  .introducao_blog p,
+  .guia_rapido p,
+  .beneficios p,
+  .como_comecar p,
+  .economia p,
+  .dicas p,
+  .incentivos p {
+      @apply text-[20px] ml-5;
+  }
+}
+
+/* Telas menores que 900px */
+@media (max-width: 900px) {
+  .introducao_blog h1,
+  .guia_rapido h1,
+  .beneficios h1,
+  .como_comecar h1,
+  .economia h1,
+  .dicas h1,
+  .incentivos h1 {
+      @apply text-[30px] ml-3 mt-3;
+  }
+
+  .introducao_blog h2,
+  .guia_rapido h2,
+  .dicas h2 {
+      @apply text-[20px] ml-3;
+  }
+
+  .introducao_blog p,
+  .guia_rapido p,
+  .beneficios p,
+  .como_comecar p,
+  .economia p,
+  .dicas p,
+  .incentivos p {
+      @apply text-[16px] ml-3;
+  }
+}
 
 /* ESTILIZAÇÃO A PÁGINA DE DESAFIO*/
 
