@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 const Calculadora = () => {
-  const [mensagemFeedback, setMensagemFeedback] = useState('');
   const [calculo, setCalculo] = useState<TipoConta>({
     id_economia: 0,
     consumo_mensal_energia: '',
@@ -14,6 +13,7 @@ const Calculadora = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [mensagemFeedback, setMensagemFeedback] = useState<string>('');
 
   // Recupera os dados iniciais via GET
   useEffect(() => {
@@ -179,15 +179,22 @@ const Calculadora = () => {
         <div className="resultado_calculadora">
           <h2>Resultado Estimado</h2>
           <p>
-            Após preencher os campos acima e clicar em "Calcular Economia", você verá aqui o valor aproximado que poderá economizar em sua conta de energia ao adotar a energia solar.
+            Após preencher os campos acima e clicar em &quot;Resultado aqui&quot;, você verá aqui o valor aproximado que poderá economizar em sua conta de energia ao adotar a energia solar.
           </p>
           <p>Economia Mensal Estimada: R$ <span id="resultado-mensal">{calculo.economia_total}</span></p>
         </div>
 
+        {/* Exibe mensagem de feedback */}
+        {mensagemFeedback && (
+          <div className="mensagem-feedback">
+            <p>{mensagemFeedback}</p>
+          </div>
+        )}
+
         {/* Botão para novo cálculo */}
         <div className='btn_atualizar'>
           <h2>Deseja fazer outro cálculo?</h2>
-          <button  onClick={novoCalculo}>Clique aqui</button>
+          <button onClick={novoCalculo}>Clique aqui</button>
         </div>
       </div>
     </div>

@@ -1,12 +1,13 @@
 "use client";
-import { TipoCadastro } from '@/types/types';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { TipoCadastro } from '@/types/types'; // Importa o tipo de dados para o usuário
+import Link from 'next/link'; // Importa o Link do Next.js para navegação
+import { useRouter } from 'next/navigation'; // Importa o hook do Next.js para navegação
+import React, { useEffect, useState } from 'react'; // Importa React e hooks necessários
 
 export default function EditarExcluirUsuario() {
   const [mensagemFeedback, setMensagemFeedback] = useState('');
   const navigate = useRouter();
+  const [isEditMode, setIsEditMode] = useState(false);
   const [usuario, setUsuario] = useState<TipoCadastro>({
     id_usuario: 0,
     nome: "",
@@ -14,7 +15,6 @@ export default function EditarExcluirUsuario() {
     cpf: "",
     senha: "",
   });
-  const [isEditMode, setIsEditMode] = useState(false);
 
   useEffect(() => {
     // Recupera os dados do usuário do localStorage
@@ -89,10 +89,9 @@ export default function EditarExcluirUsuario() {
           senha: "",
         });
         setIsEditMode(false);
-        
+
         // Recarrega a página
         window.location.reload();
-
       } else {
         throw new Error('Resposta vazia do servidor.');
       }
@@ -129,74 +128,75 @@ export default function EditarExcluirUsuario() {
   return (
     <div className="editar-excluir-page">
       <h2 className="titulo">Editar ou Excluir Conta</h2>
-      <form onSubmit={handleSubmit} className="input-area">
-        <label htmlFor="idNome">Nome completo:</label>
-        <input
-          type="text"
-          id="idNome"
-          name="nome"
-          placeholder="Nome completo"
-          value={usuario.nome}
-          onChange={handleChange}
-          required
-        />
+      {isEditMode && (
+        <form onSubmit={handleSubmit} className="input-area">
+          <label htmlFor="idNome">Nome completo:</label>
+          <input
+            type="text"
+            id="idNome"
+            name="nome"
+            placeholder="Nome completo"
+            value={usuario.nome}
+            onChange={handleChange}
+            required
+          />
 
-        <label htmlFor="idEmail">Email:</label>
-        <input
-          type="email"
-          id="idEmail"
-          name="email"
-          placeholder="Email"
-          value={usuario.email}
-          onChange={handleChange}
-          required
-          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-        />
+          <label htmlFor="idEmail">Email:</label>
+          <input
+            type="email"
+            id="idEmail"
+            name="email"
+            placeholder="Email"
+            value={usuario.email}
+            onChange={handleChange}
+            required
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          />
 
-        <label htmlFor="idCpf">CPF:</label>
-        <input
-          type="text"
-          id="idCpf"
-          name="cpf"
-          placeholder="CPF"
-          value={usuario.cpf}
-          onChange={handleChange}
-          required
-        />
+          <label htmlFor="idCpf">CPF:</label>
+          <input
+            type="text"
+            id="idCpf"
+            name="cpf"
+            placeholder="CPF"
+            value={usuario.cpf}
+            onChange={handleChange}
+            required
+          />
 
-        <label htmlFor="idSenha">Senha:</label>
-        <input
-          type="password"
-          id="idSenha"
-          name="senha"
-          placeholder="Senha"
-          value={usuario.senha}
-          onChange={handleChange}
-          required
-          pattern=".{8,}"
-          title="A senha deve ter no mínimo 8 caracteres."
-        />
+          <label htmlFor="idSenha">Senha:</label>
+          <input
+            type="password"
+            id="idSenha"
+            name="senha"
+            placeholder="Senha"
+            value={usuario.senha}
+            onChange={handleChange}
+            required
+            pattern=".{8,}"
+            title="A senha deve ter no mínimo 8 caracteres."
+          />
 
-        <div className="atualiza">
-          <button type="submit" className="botao-atualizar">
-            Atualizar Dados
-          </button>
-        </div>
-        
-        <div className="excluir">
-          <button type="button" onClick={handleDelete} className="botao-excluir">
-            Excluir Conta
-          </button>
-        </div>
-        
-      </form>
+          <div className="atualiza">
+            <button type="submit" className="botao-atualizar">
+              Atualizar Dados
+            </button>
+          </div>
 
+          <div className="excluir">
+            <button type="button" onClick={handleDelete} className="botao-excluir">
+              Excluir Conta
+            </button>
+          </div>
+        </form>
+      )}
+      
       <p className={mensagemFeedback.includes('sucesso') ? 'mensagem-sucesso' : 'mensagem-erro'}>
         {mensagemFeedback}
       </p>
 
       <p className="login">
-        <Link href="/" className="voltar-perfil">Voltar para o página inicial</Link>
+        <Link href="/" className="voltar-perfil">Voltar para a página inicial</Link>
       </p>
     </div>
   );
