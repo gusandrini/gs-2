@@ -40,7 +40,7 @@ export default function Cadastro() {
             } else {
                 const errorText = await response.text();
                 const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
-                
+
                 // Tratamento específico para ORA-00001
                 if (errorMessage.includes("ORA-00001")) {
                     setMensagemCadastro("Erro ao cadastrar: Usuário já cadastrado.");
@@ -92,7 +92,7 @@ export default function Cadastro() {
                     value={cadastro.cpf}
                     onChange={(e) => setCadastro({ ...cadastro, cpf: e.target.value })}
                     required
-                    pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" // Expressão regular para CPF
+                    pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"
                     title="Informe seu CPF no formato XXX.XXX.XXX-XX ou apenas números."
                 />
 

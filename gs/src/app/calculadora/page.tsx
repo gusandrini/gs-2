@@ -1,7 +1,7 @@
 "use client";
 import { TipoConta } from '@/types/types';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Calculadora = () => {
   const [calculo, setCalculo] = useState<TipoConta>({
@@ -85,7 +85,7 @@ const Calculadora = () => {
         const errorData = await response.json();
         console.error('Erro ao enviar os dados:', errorData); // Log da resposta de erro
         setMensagemFeedback('Falha ao enviar os dados para o servidor.');
-        setIsLoading(false); 
+        setIsLoading(false);
         return;
       }
 
@@ -137,6 +137,7 @@ const Calculadora = () => {
                   value={calculo.consumo_mensal_energia}
                   onChange={handleChange}
                   placeholder="Ex: 300"
+                  min="0"
                   required
                 />
               </div>
@@ -150,6 +151,7 @@ const Calculadora = () => {
                   value={calculo.custo_energia}
                   onChange={handleChange}
                   placeholder="Ex: 0.50"
+                  min="0"
                   required
                 />
               </div>
@@ -163,6 +165,7 @@ const Calculadora = () => {
                   value={calculo.economia_es}
                   onChange={handleChange}
                   placeholder="Ex: 70"
+                  min="0"
                   required
                 />
               </div>

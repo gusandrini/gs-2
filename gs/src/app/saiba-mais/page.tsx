@@ -27,7 +27,7 @@ const Saiba = () => {
       // Verifica e converte os valores numéricos
       const energiaMensal = saiba.energia_mensal ? parseFloat(saiba.energia_mensal.toString()) : 0;
       const orcamento = saiba.orcamento ? parseFloat(saiba.orcamento.toString()) : 0;
-    
+
       const response = await fetch("http://localhost:8080/fonte", {
         method: "POST",
         headers: {
@@ -91,8 +91,8 @@ const Saiba = () => {
       <div className="introducao_saiba">
         <h1>O que é Energia Sustentável?</h1>
         <p>
-          Energia sustentável refere-se a fontes de energia que podem ser utilizadas sem comprometer a capacidade das gerações futuras de 
-          atenderem às suas necessidades energéticas. Trata-se de um conceito voltado para o uso de recursos renováveis e de baixo impacto 
+          Energia sustentável refere-se a fontes de energia que podem ser utilizadas sem comprometer a capacidade das gerações futuras de
+          atenderem às suas necessidades energéticas. Trata-se de um conceito voltado para o uso de recursos renováveis e de baixo impacto
           ambiental, promovendo um equilíbrio entre desenvolvimento e preservação do meio ambiente.
         </p>
       </div>
@@ -102,7 +102,7 @@ const Saiba = () => {
         <div className="solar">
           <h2>Energia solar</h2>
           <p>
-            Captada através de painéis solares, essa energia converte a luz do sol em eletricidade ou calor. É limpa, abundante e pode ser usada 
+            Captada através de painéis solares, essa energia converte a luz do sol em eletricidade ou calor. É limpa, abundante e pode ser usada
             em diversas escalas, desde residências até grandes indústrias.
           </p>
         </div>
@@ -110,7 +110,7 @@ const Saiba = () => {
         <div className="eolica">
           <h2>Energia Eólica</h2>
           <p>
-            Gerada pelo vento, essa energia é captada por turbinas eólicas, que convertem o movimento do vento em eletricidade. É altamente 
+            Gerada pelo vento, essa energia é captada por turbinas eólicas, que convertem o movimento do vento em eletricidade. É altamente
             eficiente em áreas com ventos constantes e reduz significativamente as emissões de carbono.
           </p>
         </div>
@@ -118,8 +118,8 @@ const Saiba = () => {
         <div className="biomassa">
           <h2>Biomassa</h2>
           <p>
-            A biomassa inclui materiais orgânicos, como resíduos agrícolas e florestais, que podem ser convertidos em energia através de 
-            processos como combustão ou digestão anaeróbica. Ela aproveita materiais que seriam descartados e os transforma em uma fonte de 
+            A biomassa inclui materiais orgânicos, como resíduos agrícolas e florestais, que podem ser convertidos em energia através de
+            processos como combustão ou digestão anaeróbica. Ela aproveita materiais que seriam descartados e os transforma em uma fonte de
             energia renovável.
           </p>
         </div>
@@ -127,7 +127,7 @@ const Saiba = () => {
         <div className="hidraeletrica">
           <h2>Energia Hidraelétrica de Pequena Escala</h2>
           <p>
-            Embora a energia hidrelétrica tradicional possa causar impactos ambientais, as pequenas usinas hidrelétricas (PCHs) são uma alternativa 
+            Embora a energia hidrelétrica tradicional possa causar impactos ambientais, as pequenas usinas hidrelétricas (PCHs) são uma alternativa
             com menos impactos, aproveitando a força da água em pequenas quedas ou rios sem necessidade de grandes barragens.
           </p>
         </div>
@@ -135,7 +135,7 @@ const Saiba = () => {
         <div className="geotermica">
           <h2>Energia Geotérmica</h2>
           <p>
-            Essa fonte utiliza o calor interno da Terra para gerar eletricidade ou aquecer ambientes. Embora mais comum em áreas geologicamente 
+            Essa fonte utiliza o calor interno da Terra para gerar eletricidade ou aquecer ambientes. Embora mais comum em áreas geologicamente
             ativas, a geotermia é uma opção promissora e contínua em algumas regiões.
           </p>
         </div>
@@ -144,15 +144,15 @@ const Saiba = () => {
       <div className="beneficios">
         <h1>Benefícios da Energia Sustentável</h1>
         <p>
-          Redução de Emissões de Carbono: <br /> Por serem fontes limpas, energias sustentáveis emitem pouco ou nenhum gás de efeito estufa, 
+          Redução de Emissões de Carbono: <br /> Por serem fontes limpas, energias sustentáveis emitem pouco ou nenhum gás de efeito estufa,
           ajudando a reduzir o aquecimento global e seus impactos climáticos.
         </p>
         <p>
-          Independência Energética: <br /> Ao adotar fontes renováveis, os países e regiões podem diminuir a dependência de combustíveis fósseis importados, 
+          Independência Energética: <br /> Ao adotar fontes renováveis, os países e regiões podem diminuir a dependência de combustíveis fósseis importados,
           fortalecendo a economia local e aumentando a segurança energética.
         </p>
         <p>
-          Economia e Sustentabilidade Financeira: <br /> Após o investimento inicial, muitas fontes de energia sustentável geram eletricidade a um custo mais 
+          Economia e Sustentabilidade Financeira: <br /> Após o investimento inicial, muitas fontes de energia sustentável geram eletricidade a um custo mais
           baixo. No longo prazo, isso representa economia para residências, empresas e governos.
         </p>
       </div>
@@ -160,7 +160,7 @@ const Saiba = () => {
       <div className="impacto">
         <h1>Como a Energia Sustentável Impacta o Futuro</h1>
         <p>
-          O uso de energia sustentável está cada vez mais no centro das discussões sobre o futuro do planeta. Com a crescente demanda energética e as 
+          O uso de energia sustentável está cada vez mais no centro das discussões sobre o futuro do planeta. Com a crescente demanda energética e as
           mudanças climáticas, é fundamental que países e indivíduos adotem práticas e tecnologias mais limpas e eficientes.
         </p>
       </div>
@@ -168,8 +168,8 @@ const Saiba = () => {
       <div className="iniciativas">
         <h1>Iniciativas para um Futuro Sustentável:</h1>
         <p>
-          Empresas, governos e comunidades ao redor do mundo estão inovando para tornar a energia sustentável mais acessível e prática para todos. 
-          Incentivos governamentais, investimentos em pesquisa e desenvolvimento, e a expansão de redes inteligentes estão ajudando a tornar essa 
+          Empresas, governos e comunidades ao redor do mundo estão inovando para tornar a energia sustentável mais acessível e prática para todos.
+          Incentivos governamentais, investimentos em pesquisa e desenvolvimento, e a expansão de redes inteligentes estão ajudando a tornar essa
           realidade mais próxima.
         </p>
       </div>
@@ -177,7 +177,7 @@ const Saiba = () => {
       <div className="porque_investir">
         <h1>Por que Investir em Energia Sustentável?</h1>
         <p>
-          Investir em energia sustentável não é apenas uma escolha ambientalmente responsável, mas também econômica. A transição para energias 
+          Investir em energia sustentável não é apenas uma escolha ambientalmente responsável, mas também econômica. A transição para energias
           renováveis representa uma oportunidade de preservar o planeta enquanto promove o desenvolvimento econômico sustentável.
         </p>
       </div>
@@ -196,8 +196,8 @@ const Saiba = () => {
             <fieldset>
               <div>
                 <label htmlFor="tp_energia">Tipo de Energia de Interesse:</label>
-                <select 
-                  id="tp_energia" 
+                <select
+                  id="tp_energia"
                   name="tp_energia"
                   value={saiba.tp_energia}
                   onChange={(e) => setSaiba({ ...saiba, tp_energia: e.target.value })}
@@ -212,10 +212,10 @@ const Saiba = () => {
               </div>
               <div>
                 <label htmlFor="localizacao_geografica">Localização Geográfica:</label>
-                <select 
-                  id="localizacao_geografica" 
+                <select
+                  id="localizacao_geografica"
                   name="localizacao_geografica"
-                  value={saiba.localizacao_geografica} 
+                  value={saiba.localizacao_geografica}
                   onChange={(e) => setSaiba({ ...saiba, localizacao_geografica: e.target.value })}
                 >
                   <option value="" disabled>Selecione o estado</option>
@@ -251,21 +251,22 @@ const Saiba = () => {
 
               <div>
                 <label htmlFor="energia_mensal">Consumo de Energia Mensal(kWh):</label>
-                <input 
-                  type="number" 
-                  id="energia_mensal" 
-                  name="energia_mensal" 
+                <input
+                  type="number"
+                  id="energia_mensal"
+                  name="energia_mensal"
                   placeholder="kWh"
-                  value={saiba.energia_mensal} 
-                  onChange={handleChange} 
+                  value={saiba.energia_mensal}
+                  onChange={handleChange}
+                  min="0"
                 />
               </div>
               <div>
                 <label htmlFor="obj_implementacao">Objetivo de Implementação:</label>
-                <select 
-                  id="obj_implementacao" 
-                  name="obj_implementacao" 
-                  value={saiba.obj_implementacao} 
+                <select
+                  id="obj_implementacao"
+                  name="obj_implementacao"
+                  value={saiba.obj_implementacao}
                   onChange={(e) => setSaiba({ ...saiba, obj_implementacao: e.target.value })}
                 >
                   <option value="" disabled>Selecione o objetivo</option>
@@ -278,22 +279,23 @@ const Saiba = () => {
 
               <div>
                 <label htmlFor="orcamento">Orçamento Aproximado:</label>
-                <input 
-                  type="number" 
-                  id="orcamento" 
-                  name="orcamento" 
+                <input
+                  type="number"
+                  id="orcamento"
+                  name="orcamento"
                   placeholder="Orçamento para implementação"
-                  value={saiba.orcamento} 
-                  onChange={handleChange} 
+                  value={saiba.orcamento}
+                  onChange={handleChange}
+                  min="0"
                 />
               </div>
 
               <div>
                 <label htmlFor="usuario_es">Possui energia sustentável:</label>
-                <select 
-                  id="usuario_es" 
-                  name="usuario_es" 
-                  value={saiba.usuario_es} 
+                <select
+                  id="usuario_es"
+                  name="usuario_es"
+                  value={saiba.usuario_es}
                   onChange={(e) => setSaiba({ ...saiba, usuario_es: e.target.value })}
                 >
                   <option value="" disabled>Selecione uma opção</option>
@@ -304,10 +306,10 @@ const Saiba = () => {
 
               <div>
                 <label htmlFor="necessidade_atendimento">Necessidade de Atendimento:</label>
-                <select 
-                  id="necessidade_atendimento" 
-                  name="necessidade_atendimento" 
-                  value={saiba.necessidade_atendimento} 
+                <select
+                  id="necessidade_atendimento"
+                  name="necessidade_atendimento"
+                  value={saiba.necessidade_atendimento}
                   onChange={(e) => setSaiba({ ...saiba, necessidade_atendimento: e.target.value })}
                 >
                   <option value="" disabled>Selecione a necessidade</option>
@@ -321,10 +323,10 @@ const Saiba = () => {
 
               <div>
                 <label htmlFor="preferencia_contato">Preferência de Contato:</label>
-                <select 
-                  id="preferencia_contato" 
+                <select
+                  id="preferencia_contato"
                   name="preferencia_contato"
-                  value={saiba.preferencia_contato} 
+                  value={saiba.preferencia_contato}
                   onChange={(e) => setSaiba({ ...saiba, preferencia_contato: e.target.value })}
                 >
                   <option value="" disabled>Selecione uma opção</option>
@@ -335,13 +337,13 @@ const Saiba = () => {
 
               <div>
                 <label htmlFor="contato">Contato:</label>
-                <input 
-                  type="text" 
-                  id="contato" 
+                <input
+                  type="text"
+                  id="contato"
                   name="contato"
                   placeholder="Informe o contato"
-                  value={saiba.contato} 
-                  onChange={handleChange} 
+                  value={saiba.contato}
+                  onChange={handleChange}
                 />
               </div>
             </fieldset>
