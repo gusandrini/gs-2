@@ -447,24 +447,89 @@
 
 /* ESTILIZAÇÃO A PÁGINA DE DESAFIO*/
 
-@layer components{
-    .introducao_desafio h1,
-    .obj_desafio h1,
-    .como_participar h1,
-    .exemplo_desafios h1,
-    .premiacao h1,
-    .recursos_comecar h1{
-        @apply flex justify-start items-start ml-5 mt-5 text-[45px]
-    }
+@layer components {
+  .introducao_desafio h1,
+  .obj_desafio h1,
+  .como_participar h1,
+  .exemplo_desafios h1,
+  .premiacao h1,
+  .recursos_comecar h1 {
+      @apply flex justify-start items-start ml-5 mt-5 text-[45px];
+  }
 
-    .introducao_desafio p,
-    .obj_desafio p,
-    .como_participar p,
-    .exemplo_desafios p,
-    .premiacao p,
-    .recursos_comecar p{
-        @apply flex justify-start items-start ml-5 text-left text-[20px]
-    }
+  .introducao_desafio p,
+  .obj_desafio p,
+  .como_participar p,
+  .exemplo_desafios p,
+  .premiacao p,
+  .recursos_comecar p {
+      @apply flex justify-start items-start ml-5 text-left text-[20px];
+  }
+}
+
+/* Estilos responsivos */
+
+/* Telas entre 650px e 1024px */
+@media (min-width: 650px) and (max-width: 1024px) {
+  .introducao_desafio h1,
+  .obj_desafio h1,
+  .como_participar h1,
+  .exemplo_desafios h1,
+  .premiacao h1,
+  .recursos_comecar h1 {
+      @apply text-[35px] ml-4 mt-4;
+  }
+
+  .introducao_desafio p,
+  .obj_desafio p,
+  .como_participar p,
+  .exemplo_desafios p,
+  .premiacao p,
+  .recursos_comecar p {
+      @apply text-[18px] ml-4;
+  }
+}
+
+/* Telas maiores que 1025px */
+@media (min-width: 1025px) {
+  .introducao_desafio h1,
+  .obj_desafio h1,
+  .como_participar h1,
+  .exemplo_desafios h1,
+  .premiacao h1,
+  .recursos_comecar h1 {
+      @apply text-[50px] ml-5 mt-5;
+  }
+
+  .introducao_desafio p,
+  .obj_desafio p,
+  .como_participar p,
+  .exemplo_desafios p,
+  .premiacao p,
+  .recursos_comecar p {
+      @apply text-[20px] ml-5;
+  }
+}
+
+/* Telas menores que 900px */
+@media (max-width: 900px) {
+  .introducao_desafio h1,
+  .obj_desafio h1,
+  .como_participar h1,
+  .exemplo_desafios h1,
+  .premiacao h1,
+  .recursos_comecar h1 {
+      @apply text-[30px] ml-3 mt-3;
+  }
+
+  .introducao_desafio p,
+  .obj_desafio p,
+  .como_participar p,
+  .exemplo_desafios p,
+  .premiacao p,
+  .recursos_comecar p {
+      @apply text-[16px] ml-3;
+  }
 }
 
 /* Estilização da página de CONTATO */
