@@ -375,20 +375,6 @@ const Saiba = () => {
           {mensagemSaiba && <p>{mensagemSaiba}</p>}
         </section>
       </div>
-
-      {/* <div className="resultado_calculadora">
-        <h2>Energia Estimada</h2>
-        <p>
-          Após preencher os campos acima e clicar em "Resultado aqui", você verá aqui a energia recomendada com base nos dados do banco.
-        </p>
-        {saiba ? (
-          <p>
-            Tipo de Energia: <span id="energia">{saiba.tp_energia}</span>
-          </p>
-        ) : (
-          <p>{mensagemSaiba || "Carregando dados..."}</p>
-        )}
-      </div> */}
     </div>
   );
 };
