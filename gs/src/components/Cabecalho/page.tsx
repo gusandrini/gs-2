@@ -35,7 +35,7 @@ const Cabecalho = () => {
                         <li><Link href="/blog" className="link">BLOG</Link></li>
                         <li><Link href="/desafios" className="link">DESAFIOS</Link></li>
                         <li><Link href="/contato" className="link">CONTATO</Link></li>
-                        <li><Link href="/" className="link">ECOBOT</Link></li>
+                        <li><Link href="https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?region=us-south&integrationID=ee9d55a3-29ed-4126-93b6-10efbc270a95&serviceInstanceID=609fa58f-fe11-4167-b11c-79f1243e9d94 " className="link">ECOBOT</Link></li>
                     </ul>
                 </nav>
             </div>

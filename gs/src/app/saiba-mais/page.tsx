@@ -2,10 +2,11 @@
 import { TipoEnergia } from '@/types/types';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Saiba = () => {
   const [mensagemSaiba, setMensagemSaiba] = useState('');
+  const [mensagemFeedback, setMensagemFeedback] = useState('');
   const router = useRouter();
   const [saiba, setSaiba] = useState<TipoEnergia>({
     id_es: 0,
@@ -19,12 +20,33 @@ const Saiba = () => {
     preferencia_contato: "",
     contato: "",
   });
+  const [dados, setDados] = useState<TipoEnergia[]>([]);
+
+   // Método para obter dados usando GET
+  const fetchDados = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/fonte");
+      if (response.ok) {
+        const data: TipoEnergia[] = await response.json();
+        setDados(data);
+        setMensagemFeedback('Dados carregados com sucesso.');
+      } else {
+        setMensagemFeedback('Erro ao carregar os dados.');
+      }
+    } catch (error) {
+      console.error("Falha na listagem:", error);
+      setMensagemFeedback('Falha ao carregar os dados.');
+    }
+  };
+
+  useEffect(() => {
+    fetchDados(); // Carregar dados quando o componente é montado
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      // Verifica e converte os valores numéricos
       const energiaMensal = saiba.energia_mensal ? parseFloat(saiba.energia_mensal.toString()) : 0;
       const orcamento = saiba.orcamento ? parseFloat(saiba.orcamento.toString()) : 0;
 
@@ -36,9 +58,9 @@ const Saiba = () => {
         body: JSON.stringify({
           tp_energia: saiba.tp_energia,
           localizacao_geografica: saiba.localizacao_geografica,
-          energia_mensal: energiaMensal, // Converte string para float
+          energia_mensal: energiaMensal,
           obj_implementacao: saiba.obj_implementacao,
-          orcamento: orcamento, // Converte string para float
+          orcamento: orcamento,
           necessidade_atendimento: saiba.necessidade_atendimento,
           usuario_es: saiba.usuario_es,
           preferencia_contato: saiba.preferencia_contato,
@@ -60,10 +82,10 @@ const Saiba = () => {
           contato: "",
         });
         setMensagemSaiba("Cadastro realizado com sucesso!");
+        fetchDados(); // Atualiza os dados após o POST
         setTimeout(() => {
-          router.push("/"); // Redireciona após 3 segundos
+          router.push(""); // Redireciona após 3 segundos
         }, 3000);
-
       } else {
         const errorText = await response.text();
         const errorMessage = errorText ? JSON.parse(errorText).message : "Erro desconhecido.";
@@ -353,6 +375,20 @@ const Saiba = () => {
           {mensagemSaiba && <p>{mensagemSaiba}</p>}
         </section>
       </div>
+
+      {/* <div className="resultado_calculadora">
+        <h2>Energia Estimada</h2>
+        <p>
+          Após preencher os campos acima e clicar em "Resultado aqui", você verá aqui a energia recomendada com base nos dados do banco.
+        </p>
+        {saiba ? (
+          <p>
+            Tipo de Energia: <span id="energia">{saiba.tp_energia}</span>
+          </p>
+        ) : (
+          <p>{mensagemSaiba || "Carregando dados..."}</p>
+        )}
+      </div> */}
     </div>
   );
 };
