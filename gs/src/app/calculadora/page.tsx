@@ -150,7 +150,7 @@ const Calculadora = () => {
                   name="custo_energia"
                   value={calculo.custo_energia}
                   onChange={handleChange}
-                  placeholder="Ex: 0.50"
+                  placeholder="Ex: 1"
                   min="0"
                   required
                 />
