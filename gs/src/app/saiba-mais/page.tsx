@@ -23,6 +23,21 @@ const Saiba = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (
+      !saiba.tp_energia ||
+      !saiba.localizacao_geografica ||
+      !saiba.energia_mensal ||
+      !saiba.obj_implementacao ||
+      !saiba.orcamento ||
+      !saiba.usuario_es ||
+      !saiba.necessidade_atendimento ||
+      !saiba.preferencia_contato ||
+      !saiba.contato
+    ) {
+      setMensagemSaiba("Todos os campos são obrigatórios. Por favor, preencha todos.");
+      return;
+    }
+
     try {
       const energiaMensal = saiba.energia_mensal ? parseFloat(saiba.energia_mensal.toString()) : 0;
       const orcamento = saiba.orcamento ? parseFloat(saiba.orcamento.toString()) : 0;
@@ -60,7 +75,7 @@ const Saiba = () => {
         });
         setMensagemSaiba("Cadastro realizado com sucesso!");
         setTimeout(() => {
-          router.push(""); // Redireciona após 3 segundos
+          router.push("/"); // Redireciona após 3 segundos
         }, 3000);
       } else {
         const errorText = await response.text();
