@@ -22,3 +22,7 @@ fornecer ferramentas práticas que permitam às pessoas e empresas integrar a su
 
 # Link repositório java
 https://github.com/dudatiemiak/gs2.git
+
+# Link redes sociais
+## Facebook: https://www.facebook.com/profile.php?id=61569387895983
+## Instagram: https://www.instagram.com/ecobotassistent/
